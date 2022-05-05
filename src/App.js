@@ -36,7 +36,7 @@ const App = function () {
 	}
 	return (
 		<>
-			<h1>My Project</h1>
+			<h1>Speed Project</h1>
 			{users === null ? (
 				<p>Loading...</p>
 			) : users.length === 0 ? (
@@ -58,12 +58,12 @@ const App = function () {
 				<input
 					onChange={(e) => setUsername(e.target.value)}
 					type="text"
-					placeholder="Enter your username"
+					placeholder="Example Field (Username)"
 				/>
 				<input
 					onChange={(e) => setEmail(e.target.value)}
 					type="text"
-					placeholder="Enter your email address"
+					placeholder="Example Field (email)"
 				/>
 				<input type="submit" />
 			</form>
