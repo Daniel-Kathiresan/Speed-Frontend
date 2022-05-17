@@ -8,6 +8,7 @@ const App = function () {
 			<div>
 			<button class="customButton" href="FindArticle.js">Find Article</button>
 			<button class="customButton"><a href="SubmitArticle.js">Submit Article</a></button>
+			<button class="customButton">Moderator Login</button>
 			</div>
 		</>
 	);
