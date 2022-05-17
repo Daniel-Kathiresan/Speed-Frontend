@@ -17,20 +17,34 @@ code {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  font-size: 240%;
 }
 
-.customButton{
-  background-color: #e7e7e7; 
-  color: black;
-  padding-right: 10px;
-  border: none;
-  color: white;
-  padding: 15px 32px;
+.titlediv{
+  background-color: #ABDAE1;
+  margin-top: 0;
+}
+
+.topnav {
+  background-color: #A3B9C9;
+  overflow: hidden;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
   text-align: center;
+  padding: 14px 16px;
   text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer
+  font-size: 17px;
 }
 
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #A09CB0;
+  color: white;
+}

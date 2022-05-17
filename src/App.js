@@ -4,11 +4,16 @@ import './index.css';
 const App = function () {
 	return (
 		<>
-			<h1 class="centertitle">Speed Project</h1>
+			<div class="topnav">
+			<a class="active" href="#home">Home</a>
+ 		 	<a href="#find">Find Article</a>
+ 			<a href="#submit">Submit Article</a>
+ 		 	<a href="#moderator">Moderator Login</a>
+			</div>
+			<div class="titlediv">
+			<h1 class="centertitle">Speed Article Tool</h1>
+			</div>
 			<div>
-			<button class="customButton" href="FindArticle.js">Find Article</button>
-			<button class="customButton"><a href="SubmitArticle.js">Submit Article</a></button>
-			<button class="customButton">Moderator Login</button>
 			</div>
 		</>
 	);
