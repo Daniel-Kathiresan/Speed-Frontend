@@ -59,20 +59,20 @@ class CreateBook extends Component {
             <div className="col-md-8 m-auto">
               <br />
               <Link to="/" className="btn btn-outline-warning float-left">
-                  Show BooK List
+                  Show Article List
               </Link>
             </div>
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Add Book</h1>
-              <p className="lead text-center">
+              <h1 className="display-4 text-center">Submit a Form</h1>
+              {/* <p className="lead text-center">
                   Create new book
-              </p>
+              </p> */}
 
               <form noValidate onSubmit={this.onSubmit}>
                 <div className='form-group'>
                   <input
                     type='text'
-                    placeholder='Title of the Book'
+                    placeholder='Article Title'
                     name='title'
                     className='form-control'
                     value={this.state.title}
@@ -80,17 +80,6 @@ class CreateBook extends Component {
                   />
                 </div>
                 <br />
-
-                <div className='form-group'>
-                  <input
-                    type='text'
-                    placeholder='ISBN'
-                    name='isbn'
-                    className='form-control'
-                    value={this.state.isbn}
-                    onChange={this.onChange}
-                  />
-                </div>
 
                 <div className='form-group'>
                   <input
@@ -106,10 +95,10 @@ class CreateBook extends Component {
                 <div className='form-group'>
                   <input
                     type='text'
-                    placeholder='Describe this book'
-                    name='description'
+                    placeholder='Source'
+                    name='source'
                     className='form-control'
-                    value={this.state.description}
+                    value={this.state.source}
                     onChange={this.onChange}
                   />
                 </div>
@@ -117,10 +106,20 @@ class CreateBook extends Component {
                 <div className='form-group'>
                   <input
                     type='date'
-                    placeholder='published_date'
-                    name='published_date'
+                    placeholder='Year'
+                    name='published_year'
                     className='form-control'
-                    value={this.state.published_date}
+                    value={this.state.year}
+                    onChange={this.onChange}
+                  />
+                </div>
+                <div className='form-group'>
+                  <input
+                    type='date'
+                    placeholder='DOI'
+                    name='DOI'
+                    className='form-control'
+                    value={this.state.doi}
                     onChange={this.onChange}
                   />
                 </div>
@@ -131,6 +130,16 @@ class CreateBook extends Component {
                     name='publisher'
                     className='form-control'
                     value={this.state.publisher}
+                    onChange={this.onChange}
+                  />
+                </div>
+                <div className='form-group'>
+                  <input
+                    type='text'
+                    placeholder='Email'
+                    name='email'
+                    className='form-control'
+                    value={this.state.email}
                     onChange={this.onChange}
                   />
                 </div>
