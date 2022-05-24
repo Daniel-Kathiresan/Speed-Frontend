@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
 
 class ModeratorLogin extends Component {
   constructor(props) {
@@ -27,7 +26,7 @@ class ModeratorLogin extends Component {
   onSubmit = e => {
     
     if(this.state.password === "A"){
-        this.props.history.push('/');
+        this.props.history.push('/moderator-panel');
     }
     e.preventDefault();
   }
