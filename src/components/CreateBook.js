@@ -124,9 +124,9 @@ class CreateBook extends Component {
                   <input
                     type='date'
                     placeholder='publication_date'
-                    name='published_date'
+                    name='publication_date'
                     className='form-control'
-                    value={this.state.published_date}
+                    value={this.state.publication_date}
                     onChange={this.onChange}
                   />
                 </div>
