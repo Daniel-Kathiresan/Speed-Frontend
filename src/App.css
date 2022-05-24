@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-color: #FFF8DC;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #AA6C39;
 }
 
 .App-logo {
@@ -9,14 +12,15 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #FFF8DC;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #AA6C39;
 }
 
 .App-link {
@@ -33,30 +37,34 @@
 }
 
 .CreateBook {
-  background-color: #2c3e50;
+  background-color: #FFF8DC;
   min-height: 100vh;
-  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #AA6C39;
 }
 
 .ShowBookDetails {
-  background-color: #2c3e50;
+  background-color: #FFF8DC;
   min-height: 100vh;
-  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #AA6C39;
 }
 
 .UpdateBookInfo {
-  background-color: #2c3e50;
+  background-color: #FFF8DC;
   min-height: 100vh;
-  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #AA6C39;
 }
 
 .ShowBookList {
-  background-color: #2c3e50;
+  background-color: #FFF8DC;
   height: 100%;
   width: 100%;
   min-height: 100vh;
   min-width: 100px;
-  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #AA6C39;
 }
 
 
