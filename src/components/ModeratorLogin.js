@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import '../App.css';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 class ModeratorLogin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: []
+        password: '',
     };
   }
 
@@ -23,6 +24,17 @@ class ModeratorLogin extends Component {
       })
   };
 
+  onSubmit = e => {
+    
+    if(this.state.password === "A"){
+        this.props.history.push('/');
+    }
+    e.preventDefault();
+  }
+
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
   render() {
     return (
@@ -38,7 +50,22 @@ class ModeratorLogin extends Component {
         </div>       
             </div>
             <h2 className="display-4 text-center">Moderator Login</h2>
-
+            <form noValidate onSubmit={this.onSubmit}>
+                <div className='form-group'>
+                  <input
+                    type='text'
+                    placeholder='Enter the Moderator Password'
+                    name='password'
+                    className='form-control'
+                    value={this.state.password}
+                    onChange={this.onChange}
+                  />
+                </div>
+                <input
+                    type="submit"
+                    className="btn btn-outline-warning btn-block mt-4"
+                />
+              </form>
             </div>
         </div>
     );
