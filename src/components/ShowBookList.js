@@ -41,6 +41,15 @@ class ShowBookList extends Component {
 
     return (
       <div className="ShowBookList">
+        <div class="topnav">
+        <a class="active" href="/">Home Page</a>
+        <a href="/create-book">Add Article</a>
+        <a href="#contact">Search Article</a>
+        <a href="#about">About</a>
+        <div class="topnav-right">
+          <a href="#about" >Moderator Access</a>
+        </div>
+      </div>
         <div className="container">
           <div className="row">
             <div className="col-md-12">

@@ -23,6 +23,11 @@
   color: #AA6C39;
 }
 
+.btn {
+  background-color: #6A8F8B;
+  color: white;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -79,7 +84,8 @@
 
 .card-container {
   width: 250px;
-  border: 1px solid rgba(0,0,.125);
+  height: 150%;
+  border: 2px solid rgba(0,0,.125);
   margin: 0 auto;
   border-radius: 5px;
   overflow: hidden;
@@ -111,4 +117,42 @@
 
 .divbreak{
   margin: 0;
+}
+/*Top Nav Styling */
+.topnav {
+  background-color: #96B2A2;
+  overflow: hidden;
+}
+
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav-right {
+  float: right;
+}
+
+.topnav-right a {
+  color: #f2f2f2;
+  background-color: grey;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #C8D5BC;
+  color: white;
 }
