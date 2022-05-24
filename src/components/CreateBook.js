@@ -60,6 +60,15 @@ class CreateBook extends Component {
   render() {
     return (
       <div className="CreateBook">
+                <div class="topnav">
+        <a  href="/">Home Page</a>
+        <a class="active" href="/create-book">Add Article</a>
+        <a href="#contact">Search Article</a>
+        <a href="#about">About</a>
+        <div class="topnav-right">
+          <a href="#about" >Moderator Access</a>
+        </div>
+      </div>
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
