@@ -72,6 +72,13 @@
   color: #AA6C39;
 }
 
+.ModeratorLogin {
+  background-color: #FFF8DC;
+  min-height: 100vh;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #AA6C39;
+}
+
 
 /* BookList Styles */
 .list {
