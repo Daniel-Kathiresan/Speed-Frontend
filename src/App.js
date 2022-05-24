@@ -12,7 +12,6 @@ class App extends Component {
     return (
       <Router>
         <div>
-        <h1>SPEED</h1>
           <Route exact path='/' component={ShowBookList} />
           <Route path='/create-book' component={CreateBook} />
           <Route path='/edit-book/:id' component={UpdateBookInfo} />
