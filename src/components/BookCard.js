@@ -7,15 +7,17 @@ const BookCard = (props) => {
 
     return(
         <div className="card-container">
+            <Link to={`/show-book/${book._id}`}>
             <div className="desc">
                 <h2>
-                    <Link to={`/show-book/${book._id}`}>
-                        { book.title }
-                    </Link>
+                      { book.title }
+
                 </h2>
+                <hr class="divbreak"></hr>
                 <h3>{book.authors}</h3>
                 <p>{book.content}</p>
             </div>
+            </Link>
         </div>
     )
 };
