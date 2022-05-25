@@ -78,16 +78,27 @@ class CreateBook extends Component {
               </Link>
             </div>
             <div className="col-md-8 m-auto">
+<<<<<<< HEAD
               <h1 className="display-4 text-center">Add Article</h1>
               <p className="lead text-center">
                   Add new Article
               </p>
+=======
+              <h1 className="display-4 text-center">Submit a Form</h1>
+              {/* <p className="lead text-center">
+                  Create new book
+              </p> */}
+>>>>>>> 97370d5 (Updated UI)
 
               <form noValidate onSubmit={this.onSubmit}>
                 <div className='form-group'>
                   <input
                     type='text'
+<<<<<<< HEAD
                     placeholder='Title of the Article'
+=======
+                    placeholder='Article Title'
+>>>>>>> 97370d5 (Updated UI)
                     name='title'
                     className='form-control'
                     value={this.state.title}
@@ -99,6 +110,7 @@ class CreateBook extends Component {
                 <div className='form-group'>
                   <input
                     type='text'
+<<<<<<< HEAD
                     placeholder='Author(s)'
                     name='authors'
                     className='form-control'
@@ -112,6 +124,10 @@ class CreateBook extends Component {
                     type='text'
                     placeholder='Journal Name'
                     name='journal_name'
+=======
+                    placeholder='Author'
+                    name='author'
+>>>>>>> 97370d5 (Updated UI)
                     className='form-control'
                     value={this.state.journal_name}
                     onChange={this.onChange}
@@ -121,10 +137,17 @@ class CreateBook extends Component {
                 <div className='form-group'>
                   <input
                     type='text'
+<<<<<<< HEAD
                     placeholder='Describe the Content of this article'
                     name='content'
                     className='form-control'
                     value={this.state.content}
+=======
+                    placeholder='Source'
+                    name='source'
+                    className='form-control'
+                    value={this.state.source}
+>>>>>>> 97370d5 (Updated UI)
                     onChange={this.onChange}
                   />
                 </div>
@@ -132,10 +155,27 @@ class CreateBook extends Component {
                 <div className='form-group'>
                   <input
                     type='date'
+<<<<<<< HEAD
                     placeholder='publication_date'
                     name='publication_date'
                     className='form-control'
                     value={this.state.publication_date}
+=======
+                    placeholder='Year'
+                    name='published_year'
+                    className='form-control'
+                    value={this.state.year}
+                    onChange={this.onChange}
+                  />
+                </div>
+                <div className='form-group'>
+                  <input
+                    type='date'
+                    placeholder='DOI'
+                    name='DOI'
+                    className='form-control'
+                    value={this.state.doi}
+>>>>>>> 97370d5 (Updated UI)
                     onChange={this.onChange}
                   />
                 </div>
@@ -166,6 +206,16 @@ class CreateBook extends Component {
                     name='pages'
                     className='form-control'
                     value={this.state.pages}
+                    onChange={this.onChange}
+                  />
+                </div>
+                <div className='form-group'>
+                  <input
+                    type='text'
+                    placeholder='Email'
+                    name='email'
+                    className='form-control'
+                    value={this.state.email}
                     onChange={this.onChange}
                   />
                 </div>

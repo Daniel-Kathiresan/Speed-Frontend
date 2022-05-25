@@ -54,12 +54,20 @@ class ShowBookList extends Component {
           <div className="row">
             <div className="col-md-12">
               <br />
+<<<<<<< HEAD
               <h2 className="display-4 text-center">Article List</h2>
+=======
+              <h2 className="display-4 text-center"><br></br>SEPER</h2>
+>>>>>>> 97370d5 (Updated UI)
             </div>
 
             <div className="col-md-11">
               <Link to="/create-book" className="btn btn-outline-warning float-right">
+<<<<<<< HEAD
                 + Add New Article
+=======
+                + Submit new Article
+>>>>>>> 97370d5 (Updated UI)
               </Link>
               <br />
               <br />
