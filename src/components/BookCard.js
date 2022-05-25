@@ -7,7 +7,10 @@ const BookCard = (props) => {
 
     return(
         <div className="card-container">
+<<<<<<< HEAD
             <Link to={`/show-book/${book._id}`}>
+=======
+>>>>>>> 14bb618 (Removed the default image)
             <div className="desc">
                 <h2>
                       { book.title }
