@@ -79,26 +79,36 @@ class CreateBook extends Component {
             </div>
             <div className="col-md-8 m-auto">
 <<<<<<< HEAD
+<<<<<<< HEAD
               <h1 className="display-4 text-center">Add Article</h1>
               <p className="lead text-center">
                   Add new Article
               </p>
 =======
+=======
+>>>>>>> main
               <h1 className="display-4 text-center">Submit a Form</h1>
               {/* <p className="lead text-center">
                   Create new book
               </p> */}
+<<<<<<< HEAD
 >>>>>>> 97370d5 (Updated UI)
+=======
+>>>>>>> main
 
               <form noValidate onSubmit={this.onSubmit}>
                 <div className='form-group'>
                   <input
                     type='text'
 <<<<<<< HEAD
+<<<<<<< HEAD
                     placeholder='Title of the Article'
 =======
                     placeholder='Article Title'
 >>>>>>> 97370d5 (Updated UI)
+=======
+                    placeholder='Article Title'
+>>>>>>> main
                     name='title'
                     className='form-control'
                     value={this.state.title}
@@ -110,6 +120,7 @@ class CreateBook extends Component {
                 <div className='form-group'>
                   <input
                     type='text'
+<<<<<<< HEAD
 <<<<<<< HEAD
                     placeholder='Author(s)'
                     name='authors'
@@ -125,6 +136,8 @@ class CreateBook extends Component {
                     placeholder='Journal Name'
                     name='journal_name'
 =======
+=======
+>>>>>>> main
                     placeholder='Author'
                     name='author'
 >>>>>>> 97370d5 (Updated UI)
@@ -138,6 +151,7 @@ class CreateBook extends Component {
                   <input
                     type='text'
 <<<<<<< HEAD
+<<<<<<< HEAD
                     placeholder='Describe the Content of this article'
                     name='content'
                     className='form-control'
@@ -148,6 +162,12 @@ class CreateBook extends Component {
                     className='form-control'
                     value={this.state.source}
 >>>>>>> 97370d5 (Updated UI)
+=======
+                    placeholder='Source'
+                    name='source'
+                    className='form-control'
+                    value={this.state.source}
+>>>>>>> main
                     onChange={this.onChange}
                   />
                 </div>
@@ -155,6 +175,7 @@ class CreateBook extends Component {
                 <div className='form-group'>
                   <input
                     type='date'
+<<<<<<< HEAD
 <<<<<<< HEAD
                     placeholder='publication_date'
                     name='publication_date'
@@ -164,6 +185,11 @@ class CreateBook extends Component {
                     placeholder='Year'
                     name='published_year'
                     className='form-control'
+=======
+                    placeholder='Year'
+                    name='published_year'
+                    className='form-control'
+>>>>>>> main
                     value={this.state.year}
                     onChange={this.onChange}
                   />
@@ -175,6 +201,7 @@ class CreateBook extends Component {
                     name='DOI'
                     className='form-control'
                     value={this.state.doi}
+<<<<<<< HEAD
 >>>>>>> 97370d5 (Updated UI)
                     onChange={this.onChange}
                   />
@@ -206,6 +233,18 @@ class CreateBook extends Component {
                     name='pages'
                     className='form-control'
                     value={this.state.pages}
+=======
+>>>>>>> main
+                    onChange={this.onChange}
+                  />
+                </div>
+                <div className='form-group'>
+                  <input
+                    type='text'
+                    placeholder='Email'
+                    name='email'
+                    className='form-control'
+                    value={this.state.email}
                     onChange={this.onChange}
                   />
                 </div>
