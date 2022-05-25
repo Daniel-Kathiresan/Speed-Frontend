@@ -54,7 +54,10 @@ class ShowBookList extends Component {
           <div className="row">
             <div className="col-md-12">
               <br />
-              <h2 className="display-4 text-center">Article List</h2>
+              <h2 className="display-4 text-center">Welcome to SPEED<br></br></h2>
+              <p><center><br></br><br></br>The Software Practice Empirical Evidence <br></br>
+              Database allows you to search for recommended <br></br>articles about a 
+              specific Software Engineering practice.</center><br></br><br></br></p>
             </div>
 
             <div className="col-md-11">
