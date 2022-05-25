@@ -1,0 +1,4 @@
+{
+    "mongoURI":
+    "mongodb+srv://Speed:Speed@cluster0.7n5n3.mongodb.net/?retryWrites=true&w=majority"
+}
