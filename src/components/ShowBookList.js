@@ -14,7 +14,7 @@ class ShowBookList extends Component {
 
   componentDidMount() {
     axios
-      .get('http://localhost:8082/api/books')
+      .get('http://localhost:5000/api/books')
       .then(res => {
         this.setState({
           books: res.data
@@ -41,16 +41,25 @@ class ShowBookList extends Component {
 
     return (
       <div className="ShowBookList">
+        <div class="topnav">
+        <a class="active" href="/">Home Page</a>
+        <a href="/create-book">Add Article</a>
+        <a href="/search-book">Search Article</a>
+        <a href="#about">About</a>
+        <div class="topnav-right">
+          <a href="#about" >Moderator Access</a>
+        </div>
+      </div>
         <div className="container">
           <div className="row">
             <div className="col-md-12">
               <br />
-              <h2 className="display-4 text-center">Books List</h2>
+              <h2 className="display-4 text-center">Article List</h2>
             </div>
 
             <div className="col-md-11">
               <Link to="/create-book" className="btn btn-outline-warning float-right">
-                + Add New Book
+                + Add New Article
               </Link>
               <br />
               <br />

@@ -9,11 +9,13 @@ class CreateBook extends Component {
     super();
     this.state = {
       title: '',
-      isbn:'',
-      author:'',
-      description:'',
-      published_date:'',
-      publisher:''
+      authors: '',
+      journal_name: '',
+      content: '',
+      publication_date: '',
+      volume: '',
+      number: '',
+      pages: '',
     };
   }
 
@@ -26,23 +28,27 @@ class CreateBook extends Component {
 
     const data = {
       title: this.state.title,
-      isbn: this.state.isbn,
-      author: this.state.author,
-      description: this.state.description,
-      published_date: this.state.published_date,
-      publisher: this.state.publisher
+      authors: this.state.authors,
+      journal_name: this.state.journal_name,
+      content: this.state.content,
+      publication_date: this.state.publication_date,
+      volume: this.state.volume,
+      number: this.state.number,
+      pages: this.state.pages,
     };
 
     axios
-      .post('http://localhost:8082/api/books', data)
+      .post('http://localhost:5000/api/books', data)
       .then(res => {
         this.setState({
           title: '',
-          isbn:'',
-          author:'',
-          description:'',
-          published_date:'',
-          publisher:''
+          authors: '',
+          journal_name: '',
+          content: '',
+          publication_date: '',
+          volume: '',
+          number: '',
+          pages: '',
         })
         this.props.history.push('/');
       })
@@ -54,25 +60,34 @@ class CreateBook extends Component {
   render() {
     return (
       <div className="CreateBook">
+        <div class="topnav">
+          <a href="/">Home Page</a>
+          <a class="active" href="/create-book">Add Article</a>
+          <a href="/search-book">Search Article</a>
+          <a href="#about">About</a>
+          <div class="topnav-right">
+            <a href="#about" >Moderator Access</a>
+          </div>
+        </div>
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
               <br />
               <Link to="/" className="btn btn-outline-warning float-left">
-                  Show BooK List
+                Show Article List
               </Link>
             </div>
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Add Book</h1>
+              <h1 className="display-4 text-center">Add Article</h1>
               <p className="lead text-center">
-                  Create new book
+                Add new Article
               </p>
 
               <form noValidate onSubmit={this.onSubmit}>
                 <div className='form-group'>
                   <input
                     type='text'
-                    placeholder='Title of the Book'
+                    placeholder='Title of the Article'
                     name='title'
                     className='form-control'
                     value={this.state.title}
@@ -84,10 +99,10 @@ class CreateBook extends Component {
                 <div className='form-group'>
                   <input
                     type='text'
-                    placeholder='ISBN'
-                    name='isbn'
+                    placeholder='Author(s)'
+                    name='authors'
                     className='form-control'
-                    value={this.state.isbn}
+                    value={this.state.authors}
                     onChange={this.onChange}
                   />
                 </div>
@@ -95,10 +110,10 @@ class CreateBook extends Component {
                 <div className='form-group'>
                   <input
                     type='text'
-                    placeholder='Author'
-                    name='author'
+                    placeholder='Journal Name'
+                    name='journal_name'
                     className='form-control'
-                    value={this.state.author}
+                    value={this.state.journal_name}
                     onChange={this.onChange}
                   />
                 </div>
@@ -106,10 +121,10 @@ class CreateBook extends Component {
                 <div className='form-group'>
                   <input
                     type='text'
-                    placeholder='Describe this book'
-                    name='description'
+                    placeholder='Describe the Content of this article'
+                    name='content'
                     className='form-control'
-                    value={this.state.description}
+                    value={this.state.content}
                     onChange={this.onChange}
                   />
                 </div>
@@ -117,30 +132,50 @@ class CreateBook extends Component {
                 <div className='form-group'>
                   <input
                     type='date'
-                    placeholder='published_date'
-                    name='published_date'
+                    placeholder='publication_date'
+                    name='publication_date'
                     className='form-control'
-                    value={this.state.published_date}
+                    value={this.state.publication_date}
                     onChange={this.onChange}
                   />
                 </div>
                 <div className='form-group'>
                   <input
-                    type='text'
-                    placeholder='Publisher of this Book'
-                    name='publisher'
+                    type='number'
+                    placeholder='Volume No. Of this Article'
+                    name='volume'
                     className='form-control'
-                    value={this.state.publisher}
+                    value={this.state.volume}
+                    onChange={this.onChange}
+                  />
+                </div>
+                <div className='form-group'>
+                  <input
+                    type='number'
+                    placeholder='Number of this Article'
+                    name='number'
+                    className='form-control'
+                    value={this.state.number}
+                    onChange={this.onChange}
+                  />
+                </div>
+                <div className='form-group'>
+                  <input
+                    type='number'
+                    placeholder='No. of Pages in this Article'
+                    name='pages'
+                    className='form-control'
+                    value={this.state.pages}
                     onChange={this.onChange}
                   />
                 </div>
 
                 <input
-                    type="submit"
-                    className="btn btn-outline-warning btn-block mt-4"
+                  type="submit"
+                  className="btn btn-outline-warning btn-block mt-4"
                 />
               </form>
-          </div>
+            </div>
           </div>
         </div>
       </div>
