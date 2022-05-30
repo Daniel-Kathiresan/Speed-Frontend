@@ -47,7 +47,7 @@ class ApprovalPage extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    if(this.state.content_type === " " || this.state.content_type === null){
+    if(this.state.content_type === "null" || this.state.content_type === null){
       this.setState({error: "Please enter a content type before continuing" });
     } else {
       this.setState({error: "" });
@@ -88,10 +88,11 @@ class ApprovalPage extends Component {
               </p>
             </div>
           </div>
-
+        
           <div className="col-md-8 m-auto">
           <form noValidate onSubmit={this.onSubmit}>
           <div className="radio">
+          <h3>Approve or dissaprove article</h3>
           <label>
             <input 
               type="radio" 
@@ -99,7 +100,7 @@ class ApprovalPage extends Component {
               value="true"
               checked={approved === true}
               onChange={this._handleRadio} />
-            Yes
+            Approve
           </label>
        </div>
        <div className="radio">
@@ -110,27 +111,27 @@ class ApprovalPage extends Component {
              value="false"
              checked={approved === false}
              onChange={this._handleRadio} />
-           No
+           Unnaproved
          </label>
        </div>
         <div>
         </div>
                 <br />
                 <label>
-          Pick an option type
+          <h3>Pick a content type</h3>
           <select value={this.state.content_type} onChange={this.onChange}>
-          <option></option>            
+          <option value="null"></option>            
            <option value="Highly Relevant">Highly Relevant</option>
             <option value="Relevant">Relevant</option>
             <option value="Slightly Relevant">Slightly Relevant</option>
             <option value="Not Relevant">Not Relevant</option>
           </select>
         </label>
-        Selected option is : {String(this.state.content_type)}
+        <h3>{this.state.error}</h3>
             <button type="submit" className="btn btn-outline-info btn-lg btn-block">Update Book</button>
             </form>
           </div>
-      <p>{this.state.error}</p>
+
         </div>
       </div>
     );
