@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import '../App.css';
 import axios from 'axios';
 
-class showBookDetails extends Component {
+class moderatorArticleDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,35 +12,24 @@ class showBookDetails extends Component {
   }
 
   componentDidMount() {
-    // console.log("Print id: " + this.props.match.params.id);
+    console.log("Print id: " + this.props.match.params.id);
     axios
       .get('http://localhost:5000/api/books/'+this.props.match.params.id)
       .then(res => {
-        // console.log("Print-showBookDetails-API-response: " + res.data);
+        console.log("Print-showBookDetails-API-response: " + res.data);
         this.setState({
           book: res.data
         })
       })
       .catch(err => {
-        console.log("Error from ShowBookDetails");
+        console.log("Error from ModeratorArticleDetails");
       })
   };
-
-  onDeleteClick (id) {
-    axios
-      .delete('http://localhost:5000/api/books/'+id)
-      .then(res => {
-        this.props.history.push("/");
-      })
-      .catch(err => {
-        console.log("Error form ShowBookDetails_deleteClick");
-      })
-  };
-
 
   render() {
 
     const book = this.state.book;
+    console.log(book.approved);
     let BookItem = <div>
       <table className="table table-hover table-dark">
         {/* <thead>
@@ -94,6 +83,11 @@ class showBookDetails extends Component {
           </tr>
           <tr>
             <th scope="row">9</th>
+            <td>Approval</td>
+            <td>{ String(book.approved) }</td>
+          </tr>
+          <tr>
+            <th scope="row">10</th>
             <td>Content</td>
             <td>{ String(book.content_type) }</td>
           </tr>
@@ -102,18 +96,18 @@ class showBookDetails extends Component {
     </div>
 
     return (
-      <div className="ShowBookDetails">
+      <div className="ModeratorArticleDetails">
         <div className="container">
           <div className="row">
             <div className="col-md-10 m-auto">
               <br /> <br />
-              <Link to="/" className="btn btn-outline-warning float-left">
-                  Show Article List
+              <Link to="/moderator-panel" className="btn btn-outline-warning float-left">
+                  Show Unnaproved Article List
               </Link>
             </div>
             <br />
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Article Record</h1>
+              <h1 className="display-4 text-center">Moderator Article Record</h1>
               <p className="lead text-center">
                   View Articles Info
               </p>
@@ -123,10 +117,24 @@ class showBookDetails extends Component {
           <div>
             { BookItem }
           </div>
+
+          <div className="row">
+            <div className="col-md-6">
+              <Link to={`/approval-page/${book._id}`} className="btn btn-outline-info btn-lg btn-block">
+                    Approve Article
+              </Link>
+              <br />
+            </div>
+
+          </div>
+            {/* <br />
+            <button type="button" class="btn btn-outline-info btn-lg btn-block">Approve Article</button>
+             */}
+
         </div>
       </div>
     );
   }
 }
 
-export default showBookDetails;
+export default moderatorArticleDetails;

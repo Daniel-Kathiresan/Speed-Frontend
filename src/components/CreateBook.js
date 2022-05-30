@@ -66,7 +66,7 @@ class CreateBook extends Component {
         <a href="#contact">Search Article</a>
         <a href="#about">About</a>
         <div class="topnav-right">
-          <a href="#about" >Moderator Access</a>
+          <a href="moderator-login" >Moderator Access</a>
         </div>
       </div>
         <div className="container">
