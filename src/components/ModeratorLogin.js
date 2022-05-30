@@ -25,7 +25,7 @@ class ModeratorLogin extends Component {
 
   onSubmit = e => {
     
-    if(this.state.password === "A"){
+    if(this.state.password === "SPEED"){
         this.props.history.push('/moderator-panel');
     }
     e.preventDefault();
