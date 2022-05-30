@@ -6,6 +6,10 @@ import CreateBook from './components/CreateBook';
 import ShowBookList from './components/ShowBookList';
 import ShowBookDetails from './components/ShowBookDetails';
 import UpdateBookInfo from './components/UpdateBookInfo';
+import ModeratorLogin from './components/ModeratorLogin';
+import ModeratorPanel from './components/ModeratorPanel';
+import ModeratorArticleDetails from './components/ModeratorArticleDetails'
+import ApprovalPage from './components/ApprovalPage'
 
 class App extends Component {
   render() {
@@ -16,6 +20,10 @@ class App extends Component {
           <Route path='/create-book' component={CreateBook} />
           <Route path='/edit-book/:id' component={UpdateBookInfo} />
           <Route path='/show-book/:id' component={ShowBookDetails} />
+          <Route path='/moderator-login' component={ModeratorLogin}/>
+          <Route path='/moderator-panel' component={ModeratorPanel}/>
+          <Route path='/moderator-details/:id' component={ModeratorArticleDetails}/>
+          <Route path='/approval-page/:id' component={ApprovalPage}/>
         </div>
       </Router>
     );
