@@ -8,7 +8,8 @@ class ShowBookList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: []
+      books: [],
+      approvedBooks: [],
     };
   }
 
@@ -17,7 +18,8 @@ class ShowBookList extends Component {
       .get('http://localhost:5000/api/books')
       .then(res => {
         this.setState({
-          books: res.data
+          books: res.data,
+          approvedBooks: res.data,
         })
       })
       .catch(err =>{
@@ -28,13 +30,19 @@ class ShowBookList extends Component {
 
   render() {
     const books = this.state.books;
-    console.log("PrintBook: " + books);
+    books.forEach(element => {
+      if(element.approved === false){
+        console.log("Approval " + element.title +element.approved)
+        delete this.state.approvedBooks[this.state.approvedBooks.indexOf(element)]
+      }
+    });
+    console.log("PrintBook: " + this.state.approvedBooks);
     let bookList;
 
-    if(!books) {
+    if(!this.state.approvedBooks) {
       bookList = "there is no book record!";
     } else {
-      bookList = books.map((book, k) =>
+      bookList = this.state.approvedBooks.map((book, k) => 
         <BookCard book={book} key={k} />
       );
     }
@@ -54,7 +62,7 @@ class ShowBookList extends Component {
           <div className="row">
             <div className="col-md-12">
               <br />
-              <h2 className="display-4 text-center">Article List</h2>
+              <h2 className="display-4 text-center">Approved Article List</h2>
             </div>
 
             <div className="col-md-11">
@@ -69,7 +77,9 @@ class ShowBookList extends Component {
           </div>
 
           <div className="list">
-                {bookList}
+                {
+                  bookList
+                }
           </div>
         </div>
       </div>

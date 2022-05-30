@@ -55,6 +55,13 @@
   color: #AA6C39;
 }
 
+.ModeratorArticleDetails {
+  background-color: #FFF8DC;
+  min-height: 100vh;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #AA6C39;
+}
+
 .UpdateBookInfo {
   background-color: #FFF8DC;
   min-height: 100vh;
@@ -62,7 +69,24 @@
   color: #AA6C39;
 }
 
+.ApprovalPage {
+  background-color: #FFF8DC;
+  min-height: 100vh;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #AA6C39;
+}
+
 .ShowBookList {
+  background-color: #FFF8DC;
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  min-width: 100px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #AA6C39;
+}
+
+.ModeratorPanel {
   background-color: #FFF8DC;
   height: 100%;
   width: 100%;
