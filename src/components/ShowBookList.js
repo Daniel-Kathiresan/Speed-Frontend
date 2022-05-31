@@ -45,7 +45,7 @@ class ShowBookList extends Component {
         <a class="active" href="/">Home Page</a>
         <a href="/create-book">Add Article</a>
         <a href="#contact">Search Article</a>
-        <a href="#about">About</a>
+        <a href="/select-article">Select Article</a>
         <div class="topnav-right">
           <a href="#about" >Moderator Access</a>
         </div>
@@ -54,10 +54,21 @@ class ShowBookList extends Component {
           <div className="row">
             <div className="col-md-12">
               <br />
-              <h2 className="display-4 text-center">Article List</h2>
+              <h2 className="display-4 text-center">Welcome to SPEED</h2>
+              <p className="display-5 text-center">
+                The Software Practice Empirical Evidence <br></br>
+                Database allows you to search for recommended <br></br>
+                articles about a specific Software Engineering practice.<br></br>
+              </p>
             </div>
 
             <div className="col-md-11">
+              <Link to="/search-book" className="btn btn-outline-warning float-right">
+                + Search for Article
+              </Link>
+              <br />
+              <br />
+            
               <Link to="/create-book" className="btn btn-outline-warning float-right">
                 + Add New Article
               </Link>
