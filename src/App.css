@@ -86,6 +86,16 @@
   color: #AA6C39;
 }
 
+.SearchArticle {
+  background-color: #FFF8DC;
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  min-width: 100px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #AA6C39;
+}
+
 .ModeratorPanel {
   background-color: #FFF8DC;
   height: 100%;
