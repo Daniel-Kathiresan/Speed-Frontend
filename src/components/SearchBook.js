@@ -16,7 +16,8 @@ class SearchBook extends Component {
         };
     }
     // 为了跟后台交互的用的自定义的方法，axios
-    /*Search(Searchinput) {
+    //connect to the backend
+    Search(Searchinput) {
         let postdate = {
             "title": Searchinput
         }
@@ -45,7 +46,7 @@ class SearchBook extends Component {
     }
     Search3(){
         
-    }*/
+    }
 
 
     render() {
