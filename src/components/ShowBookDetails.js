@@ -9,7 +9,6 @@ class showBookDetails extends Component {
     super(props);
     this.state = {
       book: {},
-      rating: ''
     };
   }
 
@@ -100,11 +99,7 @@ class showBookDetails extends Component {
             <td>Content</td>
             <td>{ String(book.content_type) }</td>
           </tr>
-          <th> 
-            <RatingStars rating={book.rating} onStarRating={(rating) => RatingStars(book, rating)} />
-           </th>
         </tbody>
-            <button type="submit" className="btn btn-outline-info btn-lg btn-block">Submit Rating</button>
       </table>
     </div>
 
@@ -129,14 +124,21 @@ class showBookDetails extends Component {
           </div>
           <div>
             { BookItem }
-            
           </div>
           <div className="star"></div>
-
+          <form onSubmit={this.onSubmit}>
+           <RatingStars setRating rating={book.rating} onStarRating={(rating) => setRating(book, rating)} />
+        <button type="submit" className="btn btn-outline-info btn-lg btn-block">Submit Rating</button>
+        </form> 
         </div>
       </div>
     );
   }
+}
+
+function setRating(rating) {
+  this.book.rating = rating;
+  // RatingStars = this.book.rating;
 }
 
 export default showBookDetails;

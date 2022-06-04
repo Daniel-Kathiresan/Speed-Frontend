@@ -156,14 +156,13 @@
 
 .topnav a.active {
   background-color: #C8D5BC;
-  color: white;
-}
+color: #AA6C39;}
 
 * {
   text-align: center;
   background-color: #FFF8DC;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: #AA6C39;
+  /* color: #AA6C39; */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -188,12 +187,14 @@
   gap: 8px;
   text-align: center;
   margin:auto;
+  color: #AA6C39;
 }
 
 .star {
   position: relative;
   cursor: pointer;
   text-align: center;
+  color: #AA6C39;
   
 }
 
@@ -205,6 +206,7 @@
   height: 1px;
   clip: rect(1px, 1px, 1px, 1px);
   text-align: center;
+  color: #AA6C39;
 }
 
 input[type="radio"]{
