@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
+import './RatingStars';
 
 const BookCard = (props) => {
     const  book  = props.book;

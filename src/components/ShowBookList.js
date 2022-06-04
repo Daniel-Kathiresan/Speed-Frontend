@@ -46,6 +46,7 @@ class ShowBookList extends Component {
         <a href="/create-book">Add Article</a>
         <a href="#contact">Search Article</a>
         <a href="/select-article">Select Article</a>
+        <a href="/rate-article">Rate Article</a>
         <div class="topnav-right">
           <a href="#about" >Moderator Access</a>
         </div>
@@ -82,6 +83,7 @@ class ShowBookList extends Component {
           <div className="list">
                 {bookList}
           </div>
+          
         </div>
       </div>
     );

@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
 import axios from 'axios';
+import RatingStars from './RatingStars';
 
 class showBookDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      book: {}
+      book: {},
+      rating: ''
     };
   }
 
@@ -18,7 +20,8 @@ class showBookDetails extends Component {
       .then(res => {
         // console.log("Print-showBookDetails-API-response: " + res.data);
         this.setState({
-          book: res.data
+          book: res.data,
+          rating: res.data
         })
       })
       .catch(err => {
@@ -37,10 +40,10 @@ class showBookDetails extends Component {
       })
   };
 
-
   render() {
 
     const book = this.state.book;
+    
     let BookItem = <div>
       <table className="table table-hover table-dark">
         {/* <thead>
@@ -92,7 +95,16 @@ class showBookDetails extends Component {
             <td>Article No. Pages</td>
             <td>{ book.pages }</td>
           </tr>
+          <tr>
+            <th scope="row">9</th>
+            <td>Content</td>
+            <td>{ String(book.content_type) }</td>
+          </tr>
+          <th> 
+            <RatingStars rating={book.rating} onStarRating={(rating) => RatingStars(book, rating)} />
+           </th>
         </tbody>
+            <button type="submit" className="btn btn-outline-info btn-lg btn-block">Submit Rating</button>
       </table>
     </div>
 
@@ -110,31 +122,16 @@ class showBookDetails extends Component {
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Article Record</h1>
               <p className="lead text-center">
-                  View Articles Info
+                  View Articles Info and Rate Article
               </p>
               <hr /> <br />
             </div>
           </div>
           <div>
             { BookItem }
+            
           </div>
-
-          <div className="row">
-            <div className="col-md-6">
-              <button type="button" className="btn btn-outline-danger btn-lg btn-block" onClick={this.onDeleteClick.bind(this,book._id)}>Delete Article</button><br />
-            </div>
-
-            <div className="col-md-6">
-              <Link to={`/edit-book/${book._id}`} className="btn btn-outline-info btn-lg btn-block">
-                    Edit Article
-              </Link>
-              <br />
-            </div>
-
-          </div>
-            {/* <br />
-            <button type="button" class="btn btn-outline-info btn-lg btn-block">Edit Article</button>
-            <button type="button" class="btn btn-outline-danger btn-lg btn-block">Delete Article</button> */}
+          <div className="star"></div>
 
         </div>
       </div>

@@ -1,63 +1,140 @@
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import '../App.css';
 import axios from 'axios';
 
-const ModerationForm = (props) => {
-    const { handleSubmit, register } = useForm();
-    const [result, setResult] = useState([]);
-    const [article, setArticle] = useState([]);
-
-    axios.get("https://thawing-thicket-05050.herokuapp.com/api/books/")
-        .then((res) =>{
-            setResult(res.data);
-        })
-        .catch(()=>{
-          alert('error retrieving data');
-        });
-    
-    const optionItems = result.map((article) =>
-        <option key={article._id}>{article._id}</option>
-        );
-
-    const [selectValue, setValue] = useState("")
-    
-    const handleSelect = (e) => {
-      setValue(e.target.value);
-      findArticle(e.target.value);
-    }
-    const findArticle = (id) => {
-        axios.get(`https://thawing-thicket-05050.herokuapp.com/api/books/${id}`)
-        .then((res) =>{
-            setArticle(JSON.stringify(res.data));
-        })
-        .catch(()=>{
-           setArticle([]);
-        });
-      }
-
-      const onSubmit = (data) => {
-        props.onSubmit(data);;
+class moderatorArticleDetails extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      book: {}
     };
+  }
 
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-        <select {...register("id")} value={selectValue} onChange={handleSelect}>
-            <option value="article">Select Article</option>
-            {optionItems}
-        </select>
-        <p>{article}</p>
-        <p><input {...register("quality")} type="checkbox" />Good Quality</p>
-        <p><input {...register("relevant")} type="checkbox" />Relevant to SE Practices</p>
-        <p><input {...register("duplicate")} type="checkbox"/>No Duplicates</p>
-        <select {...register("status")}>
-            <option value="">Select Status</option>
-            <option value="accept">Accept</option>
-            <option value="decline">Decline</option>
-        </select>
-        <p/>
-        <input type="submit" />
-    </form>
-    ); 
-};
+  componentDidMount() {
+    console.log("Print id: " + this.props.match.params.id);
+    axios
+      .get('http://localhost:5000/api/books/'+this.props.match.params.id)
+      .then(res => {
+        console.log("Print-showBookDetails-API-response: " + res.data);
+        this.setState({
+          book: res.data
+        })
+      })
+      .catch(err => {
+        console.log("Error from ModeratorArticleDetails");
+      })
+  };
 
-export default ModerationForm;
+  render() {
+
+    const book = this.state.book;
+    console.log(book.approved);
+    let BookItem = <div>
+      <table className="table table-hover table-dark">
+        {/* <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead> */}
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Title</td>
+            <td>{ book.title }</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Authors</td>
+            <td>{ book.authors }</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Journal Name</td>
+            <td>{ book.journal_name }</td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td>Content</td>
+            <td>{ book.content }</td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td>Publication Date</td>
+            <td>{ book.publication_date }</td>
+          </tr>
+          <tr>
+            <th scope="row">6</th>
+            <td>Volume</td>
+            <td>{ book.volume }</td>
+          </tr>
+          <tr>
+            <th scope="row">7</th>
+            <td>Article Number</td>
+            <td>{ book.number }</td>
+          </tr>
+          <tr>
+            <th scope="row">8</th>
+            <td>Article No. Pages</td>
+            <td>{ book.pages }</td>
+          </tr>
+          <tr>
+            <th scope="row">9</th>
+            <td>Approval</td>
+            <td>{ String(book.approved) }</td>
+          </tr>
+          <tr>
+            <th scope="row">10</th>
+            <td>Content</td>
+            <td>{ String(book.content_type) }</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    return (
+      <div className="ModeratorArticleDetails">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-10 m-auto">
+              <br /> <br />
+              <Link to="/moderator-panel" className="btn btn-outline-warning float-left">
+                  Show Unnaproved Article List
+              </Link>
+            </div>
+            <br />
+            <div className="col-md-8 m-auto">
+              <h1 className="display-4 text-center">Moderator Article Record</h1>
+              <p className="lead text-center">
+                  View Articles Info
+              </p>
+              <hr /> <br />
+            </div>
+          </div>
+          <div>
+            { BookItem }
+          </div>
+
+          <div className="row">
+            <div className="col-md-6">
+              <Link to={`/approval-page/${book._id}`} className="btn btn-outline-info btn-lg btn-block">
+                    Approve Article
+              </Link>
+              <br />
+            </div>
+
+          </div>
+            {/* <br />
+            <button type="button" class="btn btn-outline-info btn-lg btn-block">Approve Article</button>
+             */}
+
+        </div>
+      </div>
+    );
+  }
+}
+
+export default moderatorArticleDetails;

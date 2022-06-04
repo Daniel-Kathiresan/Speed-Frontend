@@ -26,6 +26,7 @@
 .btn {
   background-color: #6A8F8B;
   color: white;
+  text-align: center;
 }
 
 .App-link {
@@ -53,6 +54,7 @@
   min-height: 100vh;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #AA6C39;
+  text-align: center;
 }
 
 .UpdateBookInfo {
@@ -156,3 +158,65 @@
   background-color: #C8D5BC;
   color: white;
 }
+
+* {
+  text-align: center;
+  background-color: #FFF8DC;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #AA6C39;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+.container {
+  padding: 16px;
+  margin: 16px auto;
+}
+
+.result {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  margin:auto;
+}
+
+.star {
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+  
+}
+
+.stars_radio-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  clip: rect(1px, 1px, 1px, 1px);
+  text-align: center;
+}
+
+input[type="radio"]{
+  display:none;
+  text-align: center;
+
+}
+
+button[type="submit"]{
+  background-color: #6A8F8B;
+  color: white;
+  text-align: center;
+  margin:auto;
+}
+
