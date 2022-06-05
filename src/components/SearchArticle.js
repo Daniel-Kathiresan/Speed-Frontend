@@ -3,12 +3,12 @@ import '../App.css';
 import axios from 'axios';
 import BookCard from './BookCard';
 
+
 class SearchArticle extends Component {
   constructor(props) {
     super(props);
     this.state = {
       books: [],
-      approvedBooks: [],
       title: '',
       authors:'',
       journal_name:'',
@@ -17,12 +17,19 @@ class SearchArticle extends Component {
       volume:'',
       number:'',
       pages:'',
+      approved:'',
+      content_type: '',
       bookList: [],
     };
   }
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
+  };
+
+  onContentTypeChange = e => {
+    console.log(e.target.value)
+    this.setState({content_type: e.target.value });
   };
 
   componentDidMount() {
@@ -39,17 +46,13 @@ class SearchArticle extends Component {
   };
 
   onSubmit = e => {
+    e.preventDefault();
     const books = this.state.books;
     this.state.bookList = '';
     const matchBooks = [];
-    e.preventDefault();
-    console.log(this.state.title);
-    if(this.state.title === ""){
-      console.log("hello!")
-    }
 
     books.forEach(book => {
-      if((book.title === this.state.title && this.state.title !== "")
+      if(((book.title === this.state.title && this.state.title !== "")
       || (book.authors === this.state.authors && this.state.authors !== "")
       || (book.content === this.state.content && this.state.content !== "") 
       || (book.journal_name === this.state.journal_name && this.state.journal_name !== "")
@@ -57,6 +60,7 @@ class SearchArticle extends Component {
       || (book.volume === this.state.volume && this.state.volume !== "")
       || (book.number === this.state.number && this.state.number !== "")
       || (book.pages === this.state.pages && this.state.pages !== "")
+      || (book.content_type === this.state.content_type && this.state.content_type !== "")) && book.approved == true
         ){
           console.log("Match!" + book.title);
           matchBooks.push(book);
@@ -93,7 +97,7 @@ class SearchArticle extends Component {
           <div className="row">
             <div className="col-md-12">
               <br />
-              <h2 className="display-4 text-center">Approved Article List</h2>
+              <h2 className="display-4 text-center">Approved Article Search</h2>
             </div>
 
             <div className="col-md-11">
@@ -190,7 +194,16 @@ class SearchArticle extends Component {
                     onChange={this.onChange}
                   />
                 </div>
-
+                <div className='form-group'>
+                <h3 className="cTypeH3">Content Type</h3>
+                <select value={this.state.content_type} onChange={this.onContentTypeChange}>
+          <option value="null" defaultValue></option>            
+           <option value="Highly Relevant">Highly Relevant</option>
+            <option value="Relevant">Relevant</option>
+            <option value="Slightly Relevant">Slightly Relevant</option>
+            <option value="Not Relevant">Not Relevant</option>
+          </select>
+          </div>
                 <input
                     type="submit"
                     className="btn btn-outline-warning btn-block mt-4"

@@ -197,3 +197,19 @@
   background-color: #C8D5BC;
   color: white;
 }
+
+select{
+  font-size: 17px;
+  display: inline;
+  margin-left: 15px;
+  color: #6c757d;
+
+}
+
+.cTypeH3{
+  color: #6c757d;
+  font-size: 1em;
+  padding: 10px 0 2px 0;
+  display: inline;
+  font-weight: bold;
+}
