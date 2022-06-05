@@ -42,7 +42,7 @@ class ModeratorLogin extends Component {
         <div class="topnav">
         <a href="/">Home Page</a>
         <a href="/create-book">Add Article</a>
-        <a href="#contact">Search Article</a>
+        <a href="/search-article">Search Article</a>
         <a href="#about">About</a>
         <div class="topnav-right">
           <a class="active" href="/moderator-login" >Moderator Access</a>

@@ -120,7 +120,7 @@ class ApprovalPage extends Component {
                 <label>
           <h3>Pick a content type</h3>
           <select value={this.state.content_type} onChange={this.onChange}>
-          <option value="null"></option>            
+          <option value="null" defaultValue></option>            
            <option value="Highly Relevant">Highly Relevant</option>
             <option value="Relevant">Relevant</option>
             <option value="Slightly Relevant">Slightly Relevant</option>
