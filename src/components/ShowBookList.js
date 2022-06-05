@@ -3,6 +3,7 @@ import '../App.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import BookCard from './BookCard';
+import ClickRate from './ClickRate';
 
 class ShowBookList extends Component {
   constructor(props) {
@@ -46,9 +47,9 @@ class ShowBookList extends Component {
         <a href="/create-book">Add Article</a>
         <a href="#contact">Search Article</a>
         <a href="/select-article">Select Article</a>
-        <a href="/rate-article">Rate Article</a>
         <div class="topnav-right">
           <a href="#about" >Moderator Access</a>
+          <a href="/click-rate" >Click Rate</a>
         </div>
       </div>
         <div className="container">
@@ -66,6 +67,7 @@ class ShowBookList extends Component {
             <div className="col-md-11">
               <Link to="/search-book" className="btn btn-outline-warning float-right">
                 + Search for Article
+               
               </Link>
               <br />
               <br />

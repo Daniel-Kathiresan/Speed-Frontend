@@ -66,12 +66,10 @@
 
 .ShowBookList {
   background-color: #FFF8DC;
-  height: 100%;
-  width: 100%;
   min-height: 100vh;
-  min-width: 100px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #AA6C39;
+  text-align: center;
 }
 
 
@@ -158,16 +156,16 @@
   background-color: #C8D5BC;
 color: #AA6C39;}
 
-* {
+/* * {
   text-align: center;
   background-color: #FFF8DC;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  /* color: #AA6C39; */
+  color: #AA6C39;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   
-}
+} */
 
 .container {
   padding: 16px;
@@ -222,3 +220,76 @@ button[type="submit"]{
   margin:auto;
 }
 
+.counterbutton {
+  display: none;
+  text-align: center;
+}
+
+.counter {
+  display: none;
+  text-align: center;
+}
+
+.btn btn-outline-info btn-lg btn-block {
+  display: none;
+  text-align: center;
+}
+.counter {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  row-gap: 20px;
+}
+
+.counter h1 {
+  color: rgb(16, 0, 54);
+  font-size: 40px;
+  font-family: cursive;
+}
+
+.counter__output {
+  font-size: 40px;
+  color: rgb(116, 7, 7);
+}
+
+.btn__container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  column-gap: 20px;
+}
+
+.control__btn {
+  font-size: 20px;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: rgb(16, 0, 54);
+  border: 1px solid rgb(16, 0, 54);
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.control__btn:hover {
+  background-color: rgb(16, 0, 54);
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(16, 0, 54);
+}
+
+.reset {
+  width: 100px;
+  font-size: 18px;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: rgb(16, 0, 54);
+  border: 1px solid rgb(16, 0, 54);
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.reset:hover {
+  background-color: rgb(16, 0, 54);
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(16, 0, 54);
+}

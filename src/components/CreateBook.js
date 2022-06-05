@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import '../App.css';
 import axios from 'axios';
 
-
 class CreateBook extends Component {
   constructor() {
     super();
@@ -16,6 +15,8 @@ class CreateBook extends Component {
       volume:'',
       number:'',
       pages:'',
+      rating: '',
+      clickrate: '',
     };
   }
 
@@ -35,6 +36,7 @@ class CreateBook extends Component {
       volume: this.state.volume,
       number: this.state.number,
       pages: this.state.pages,
+      rating: this.state.rating,
     };
 
     axios
@@ -49,6 +51,8 @@ class CreateBook extends Component {
           volume:'',
           number:'',
           pages:'',
+          rating:'5',
+          clickrate: '1',
         })
         this.props.history.push('/');
       })

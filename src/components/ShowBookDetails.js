@@ -9,7 +9,7 @@ class showBookDetails extends Component {
     super(props);
     this.state = {
       book: {},
-    };
+    }
   }
 
   componentDidMount() {
@@ -20,7 +20,6 @@ class showBookDetails extends Component {
         // console.log("Print-showBookDetails-API-response: " + res.data);
         this.setState({
           book: res.data,
-          rating: res.data
         })
       })
       .catch(err => {
@@ -44,7 +43,7 @@ class showBookDetails extends Component {
     const book = this.state.book;
     
     let BookItem = <div>
-      <table className="table table-hover table-dark">
+      <table className="table table-hover">
         {/* <thead>
           <tr>
             <th scope="col">#</th>
@@ -99,6 +98,11 @@ class showBookDetails extends Component {
             <td>Content</td>
             <td>{ String(book.content_type) }</td>
           </tr>
+          <tr>
+            <th scope="row">10</th>
+            <td>Rating</td>
+            <td>{ Number(book.rating) }</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -126,9 +130,8 @@ class showBookDetails extends Component {
             { BookItem }
           </div>
           <div className="star"></div>
-          <form onSubmit={this.onSubmit}>
-           <RatingStars setRating rating={book.rating} onStarRating={(rating) => setRating(book, rating)} />
-        <button type="submit" className="btn btn-outline-info btn-lg btn-block">Submit Rating</button>
+          <form onSubmit={this.handleSubmit}>
+        <RatingStars name='star' />      
         </form> 
         </div>
       </div>
@@ -136,9 +139,5 @@ class showBookDetails extends Component {
   }
 }
 
-function setRating(rating) {
-  this.book.rating = rating;
-  // RatingStars = this.book.rating;
-}
 
 export default showBookDetails;

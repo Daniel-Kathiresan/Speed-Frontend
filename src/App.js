@@ -10,7 +10,6 @@ import ModeratorLogin from './components/ModeratorLogin';
 import ModeratorPanel from './components/ModeratorPanel';
 import ModeratorArticleDetails from './components/ModeratorArticleDetails';
 import ApprovalPage from './components/ApprovalPage';
-import RatingStars from './components/RatingStars';
 
 class App extends Component {
   render() {
@@ -25,7 +24,6 @@ class App extends Component {
           <Route path='/moderator-panel' component={ModeratorPanel}/>
           <Route path='/moderator-details/:id' component={ModeratorArticleDetails}/>
           <Route path='/approval-page/:id' component={ApprovalPage}/>
-          <Route path='/rate-article' component={RatingStars}/>
 
         </div>
       </Router>

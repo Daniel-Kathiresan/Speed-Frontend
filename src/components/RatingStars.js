@@ -1,29 +1,18 @@
 import React, { useState } from "react";
 import '../App.css';
 import { FaStar } from "react-icons/fa";
-import axios from "axios";
-
-// class RatingStars extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             book: {},
-//             rating: ''
-//         };
-//     }
-    
+import { useForm } from 'react-hook-form';
 
 const RatingStars = () => {
     const [rating, setRating] = useState(null);
     const [hover, setHover] = useState(null);
-
-    // function onRatingClick(ratingValue) 
-    // {
-    //     // this.book.rating = rating;
-    //     // this.state.rating;
-    // }
     
+    const { handleSubmit } = useForm();
+    const [ratingValue, setResult] = useState("");
+    const onSubmit = (data) => setResult(JSON.stringify(data));
+  
   return (
+    <form onSubmit={handleSubmit(onSubmit)}>
     <div>
         {[...Array(5)].map((star, i) => {
             const ratingValue = i + 1;
@@ -45,8 +34,10 @@ const RatingStars = () => {
                 </label>
             );
         })}
+        <p>{ratingValue}</p>
+    <button className="btn btn-outline-info btn-lg btn-block">Submit Rating</button>
     </div>
+    </form>
     );
 }
-
 export default RatingStars;
