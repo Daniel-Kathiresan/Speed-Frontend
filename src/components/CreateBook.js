@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import '../App.css';
 import axios from 'axios';
 
@@ -63,7 +62,7 @@ class CreateBook extends Component {
                 <div class="topnav">
         <a  href="/">Home Page</a>
         <a class="active" href="/create-book">Add Article</a>
-        <a href="#contact">Search Article</a>
+        <a href="/search-article">Search Article</a>
         <a href="#about">About</a>
         <div class="topnav-right">
           <a href="moderator-login" >Moderator Access</a>
@@ -73,9 +72,6 @@ class CreateBook extends Component {
           <div className="row">
             <div className="col-md-8 m-auto">
               <br />
-              <Link to="/" className="btn btn-outline-warning float-left">
-                  Show Article List
-              </Link>
             </div>
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Add Article</h1>
