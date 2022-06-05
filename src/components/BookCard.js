@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../App.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import "../App.css";
 
 const BookCard = (props) => {
-    const  book  = props.book;
+    const book = props.book;
 
     return(
         <div className="card-container">
@@ -13,13 +13,13 @@ const BookCard = (props) => {
                       { book.title }
 
                 </h2>
-                <hr class="divbreak"></hr>
+                <hr className="divbreak"></hr>
                 <h3>{book.authors}</h3>
                 <p>{book.content}</p>
             </div>
             </Link>
         </div>
-    )
+    );
 };
 
 export default BookCard;

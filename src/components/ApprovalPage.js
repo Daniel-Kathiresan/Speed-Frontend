@@ -9,6 +9,7 @@ class ApprovalPage extends Component {
     this.state = {
       approved:'',
       content_type: '',
+      se_practice: '',
       error: '' 
     };
     this._handleRadio = this._handleRadio.bind(this);
@@ -40,16 +41,28 @@ class ApprovalPage extends Component {
 
 
 
-  onChange = e => {
+  onSelectChange = e => {
     console.log(e.target.value)
     this.setState({content_type: e.target.value });
+  };
+
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   onSubmit = e => {
     e.preventDefault();
     if(this.state.content_type === "null" || this.state.content_type === null){
-      this.setState({error: "Please enter a content type before continuing" });
+      if(this.state.se_practice === "" || this.state.se_practice === null){
+        this.setState({error: "Please enter a content type and SE Pratice before continuing" });
+      }else{
+        this.setState({error: "Please enter a content type before continuing" });
+      }
+      
     } else {
+      if(this.state.se_practice === "" || this.state.se_practice === null){
+        this.setState({error: "Please enter an SE practice before continuing" });
+      } else {
       this.setState({error: "" });
 
     const data = {
@@ -66,6 +79,7 @@ class ApprovalPage extends Component {
         console.log("Error in Approval Page!");
       })
     }
+  }
   };
 
 
@@ -119,14 +133,24 @@ class ApprovalPage extends Component {
                 <br />
                 <label>
           <h3>Pick a content type</h3>
-          <select value={this.state.content_type} onChange={this.onChange}>
-          <option value="null"></option>            
+          <select value={this.state.content_type} onChange={this.onSelectChange}>
+          <option value="null" defaultValue></option>            
            <option value="Highly Relevant">Highly Relevant</option>
             <option value="Relevant">Relevant</option>
             <option value="Slightly Relevant">Slightly Relevant</option>
             <option value="Not Relevant">Not Relevant</option>
           </select>
         </label>
+        <div className='form-group'>
+                  <inputs
+                    type='text'
+                    placeholder='Enter an SE practice'
+                    name='se_practice'
+                    className='form-control'
+                    value={this.state.se_practice}
+                    onChange={this.onChange}
+                  />
+                </div>
         <h3>{this.state.error}</h3>
             <button type="submit" className="btn btn-outline-info btn-lg btn-block">Update Book</button>
             </form>
