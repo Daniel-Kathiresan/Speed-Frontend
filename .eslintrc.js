@@ -18,11 +18,11 @@ module.exports = {
         "react"
     ],
     "rules": {
+        "react/prop-types": "off",
         "no-alert": 2,
         "no-array-constructor": 2,
         "no-caller": 2,
         "no-catch-shadow": 2,
-        "no-empty-label": 2,
         "no-eval": 2,
         "no-extend-native": 2,
         "no-extra-bind": 2,
@@ -50,7 +50,6 @@ module.exports = {
         "no-spaced-func": 2,
         "no-trailing-spaces": 2,
         "no-undef-init": 2,
-        "no-underscore-dangle": 2,
         "no-unused-expressions": 2,
         "no-use-before-define": 2,
         "no-with": 2,
@@ -59,7 +58,6 @@ module.exports = {
         "consistent-return": 2,
         "curly": [2, "all"],
         "dot-notation": [2, { "allowKeywords": true }],
-        "eol-last": 2,
         "no-extra-parens": [2, "functions"],
         "eqeqeq": 2,
         "key-spacing": [2, { "beforeColon": false, "afterColon": true }],
@@ -69,7 +67,6 @@ module.exports = {
         "semi": 2,
         "semi-spacing": [2, {"before": false, "after": true}],
         "space-infix-ops": 2,
-        "space-return-throw-case": 2,
         "space-unary-ops": [2, { "words": true, "nonwords": false }],
         "strict": [2, "function"],
         "yoda": [2, "never"]
