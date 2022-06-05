@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import BookCard from './BookCard';
 
 class SearchArticle extends Component {
@@ -32,7 +31,6 @@ class SearchArticle extends Component {
       .then(res => {
         this.setState({
           books: res.data,
-          approvedBooks: res.data,
         })
       })
       .catch(err =>{
@@ -41,28 +39,39 @@ class SearchArticle extends Component {
   };
 
   onSubmit = e => {
+    const books = this.state.books;
+    this.state.bookList = '';
+    const matchBooks = [];
     e.preventDefault();
     console.log(this.state.title);
     if(this.state.title === ""){
       console.log("hello!")
     }
 
-    const books = this.state.books;
-    books.forEach(element => {
-      if(element.approved === false){
-        console.log("Approval " + element.title +element.approved)
-        delete this.state.approvedBooks[this.state.approvedBooks.indexOf(element)]
-      }
-    });
-    console.log("PrintBook: " + this.state.approvedBooks);
+    books.forEach(book => {
+      if((book.title === this.state.title && this.state.title !== "")
+      || (book.authors === this.state.authors && this.state.authors !== "")
+      || (book.content === this.state.content && this.state.content !== "") 
+      || (book.journal_name === this.state.journal_name && this.state.journal_name !== "")
+      || (book.publication_date === this.state.publication_date && this.state.publication_date !== "")
+      || (book.volume === this.state.volume && this.state.volume !== "")
+      || (book.number === this.state.number && this.state.number !== "")
+      || (book.pages === this.state.pages && this.state.pages !== "")
+        ){
+          console.log("Match!" + book.title);
+          matchBooks.push(book);
+        }
+    })
 
-    if(!this.state.approvedBooks) {
+    if(!matchBooks) {
       this.state.bookList = "there is no book record!";
     } else {
-      this.state.bookList = this.state.approvedBooks.map((book, k) => 
+      this.state.bookList = matchBooks.map((book, k) => 
         <BookCard book={book} key={k} />
       );
     }
+
+    this.forceUpdate();
   };
 
 
@@ -88,9 +97,6 @@ class SearchArticle extends Component {
             </div>
 
             <div className="col-md-11">
-              <Link to="/create-book" className="btn btn-outline-warning float-right">
-                + Add New Article
-              </Link>
               <br />
               <br />
               <hr />
