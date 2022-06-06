@@ -223,6 +223,7 @@ class SearchArticle extends Component {
                 <input
                     type="submit"
                     className="btn btn-outline-warning btn-block mt-4"
+                    value="Search"
                 />
               </form>
 
