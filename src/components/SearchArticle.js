@@ -91,7 +91,6 @@ class SearchArticle extends Component {
         <a href="/">Home Page</a>
         <a href="/create-book">Add Article</a>
         <a className="active" href="/search-article">Search Article</a>
-        <a href="#about">About</a>
         <div className="topnav-right">
         <a href="/moderator-panel" >Moderator Access</a>
         </div>
@@ -201,7 +200,7 @@ class SearchArticle extends Component {
                   />
                 </div>
                 <div className='form-group'>
-                <h3 className="cTypeH3">Content Type</h3>
+                <h3 className="cTypeH3">Evidence</h3>
                 <select value={this.state.content_type} onChange={this.onContentTypeChange}>
           <option value="null" defaultValue></option>
            <option value="Highly Relevant">Highly Relevant</option>

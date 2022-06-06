@@ -88,7 +88,7 @@ class moderatorArticleDetails extends Component {
           </tr>
           <tr>
             <th scope="row">10</th>
-            <td>Content</td>
+            <td>Evidence</td>
             <td>{ String(book.content_type) }</td>
           </tr>
           <tr>
