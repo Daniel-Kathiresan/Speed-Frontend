@@ -53,7 +53,6 @@ class ShowBookList extends Component {
         <a className="active" href="/">Home Page</a>
         <a href="/create-book">Add Article</a>
         <a href="/search-article">Search Article</a>
-        <a href="#about">About</a>
         <div className="topnav-right">
           <a href="/moderator-panel" >Moderator Access</a>
         </div>

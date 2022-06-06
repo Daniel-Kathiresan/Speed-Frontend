@@ -53,7 +53,7 @@ class ApprovalPage extends Component {
   onSubmit = e => {
     e.preventDefault();
     if(this.state.content_type === "null" || this.state.content_type === null){
-      this.setState({error: "Please enter a content type before continuing" });
+      this.setState({error: "Please enter a evidence type before continuing" });
     } else {
     this.setState({error: "" });
     const data = {
@@ -123,7 +123,7 @@ class ApprovalPage extends Component {
         </div>
                 <br />
                 <label>
-          <h3>Pick a content type</h3>
+          <h3>Evidence Type</h3>
           <select value={this.state.content_type} onChange={this.onSelectChange}>
           <option value="null" defaultValue></option>
            <option value="Highly Relevant">Highly Relevant</option>
