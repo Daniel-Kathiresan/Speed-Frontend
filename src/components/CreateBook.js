@@ -34,6 +34,7 @@ class CreateBook extends Component {
       volume: this.state.volume,
       number: this.state.number,
       pages: this.state.pages,
+      se_practice: this.state.se_practice
     };
 
     axios
@@ -49,6 +50,7 @@ class CreateBook extends Component {
           volume: '',
           number: '',
           pages: '',
+          se_practice: ''
         });
         this.props.history.push('/');
       })
@@ -163,6 +165,16 @@ class CreateBook extends Component {
                     name='pages'
                     className='form-control'
                     value={this.state.pages}
+                    onChange={this.onChange}
+                  />
+                </div>
+                <div className='form-group'>
+                  <input
+                    type="text"
+                    placeholder="Enter an SE practice"
+                    name="se_practice"
+                    className="form-control"
+                    value={this.state.se_practice}
                     onChange={this.onChange}
                   />
                 </div>

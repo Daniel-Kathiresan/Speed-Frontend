@@ -53,18 +53,9 @@ class ApprovalPage extends Component {
   onSubmit = e => {
     e.preventDefault();
     if(this.state.content_type === "null" || this.state.content_type === null){
-      if(this.state.se_practice === "" || this.state.se_practice === null){
-        this.setState({error: "Please enter a content type and SE Pratice before continuing" });
-      }else{
-        this.setState({error: "Please enter a content type before continuing" });
-      }
-
+      this.setState({error: "Please enter a content type before continuing" });
     } else {
-      if(this.state.se_practice === "" || this.state.se_practice === null){
-        this.setState({error: "Please enter an SE practice before continuing" });
-      } else {
-      this.setState({error: "" });
-
+    this.setState({error: "" });
     const data = {
       approved: this.state.approved,
       content_type: this.state.content_type,
@@ -80,7 +71,6 @@ class ApprovalPage extends Component {
         console.log("Error in Approval Page!" + err);
       });
     }
-  }
   };
 
 
@@ -142,16 +132,6 @@ class ApprovalPage extends Component {
             <option value="Not Relevant">Not Relevant</option>
           </select>
         </label>
-        <div className='form-group'>
-                  <input
-                    type="text"
-                    placeholder="Enter an SE practice"
-                    name="se_practice"
-                    className="form-control"
-                    value={this.state.se_practice}
-                    onChange={this.onChange}
-                  />
-                </div>
         <h3>{this.state.error}</h3>
             <button type="submit" className="btn btn-outline-info btn-lg btn-block">Update Book</button>
             </form>
