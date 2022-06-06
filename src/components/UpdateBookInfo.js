@@ -8,20 +8,20 @@ class UpdateBookInfo extends Component {
     super(props);
     this.state = {
       title: '',
-      authors:'',
-      journal_name:'',
-      content:'',
-      publication_date:'',
-      volume:'',
-      number:'',
-      pages:'',
+      authors: '',
+      journal_name: '',
+      content: '',
+      publication_date: '',
+      volume: '',
+      number: '',
+      pages: '',
     };
   }
 
   componentDidMount() {
     // console.log("Print id: " + this.props.match.params.id);
     axios
-      .get('http://localhost:5000/api/books/'+this.props.match.params.id)
+      .get('http://localhost:5000/api/books/' + this.props.match.params.id)
       .then(res => {
         // this.setState({...this.state, book: res.data})
         this.setState({
@@ -33,12 +33,12 @@ class UpdateBookInfo extends Component {
           volume: res.data.volume,
           number: res.data.number,
           pages: res.data.pages,
-        })
+        });
       })
       .catch(err => {
-        console.log("Error from UpdateBookInfo");
-      })
-  };
+        console.log("Error from UpdateBookInfo" + err);
+      });
+  }
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -59,13 +59,14 @@ class UpdateBookInfo extends Component {
     };
 
     axios
-      .put('http://localhost:5000/api/books/'+this.props.match.params.id, data)
+      .put('http://localhost:5000/api/books/' + this.props.match.params.id, data)
       .then(res => {
-        this.props.history.push('/show-book/'+this.props.match.params.id);
+        this.props.history.push('/show-book/' + this.props.match.params.id);
+        console.log(res);
       })
       .catch(err => {
-        console.log("Error in UpdateBookInfo!");
-      })
+        console.log("Error in UpdateBookInfo!" + err);
+      });
   };
 
 
