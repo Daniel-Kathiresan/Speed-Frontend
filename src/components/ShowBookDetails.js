@@ -9,6 +9,8 @@ class showBookDetails extends Component {
     super(props);
     this.state = {
       book: {},
+      clickrate: '',
+      rating: '',
     }
   }
 
@@ -17,31 +19,70 @@ class showBookDetails extends Component {
     axios
       .get('http://localhost:5000/api/books/'+this.props.match.params.id)
       .then(res => {
-        // console.log("Print-showBookDetails-API-response: " + res.data);
+        console.log("Print-showBookDetails-API-response: " + res.data);
+        // if(res.clickrate === null){
+        //   this.setState({
+        //     clickrate: 1
+        //   })
+        // } else {
+          this.setState({
+            clickrate: Number(res.data.clickrate) + 1
+          })
+        // }
         this.setState({
           book: res.data,
+          rating: res.data.rating,
         })
+        console.log("Res Clickrate ",res.data.clickrate)
       })
       .catch(err => {
         console.log("Error from ShowBookDetails");
       })
-  };
-
-  onDeleteClick (id) {
-    axios
-      .delete('http://localhost:5000/api/books/'+id)
+    
+      const data = {
+        clickrate: this.state.clickrate
+      };
+  
+      axios
+      .put('http://localhost:5000/api/books/' + this.props.match.params.id, data)
       .then(res => {
-        this.props.history.push("/");
+        this.setState({
+          clickrate: res.data.clickrate
+      })
       })
       .catch(err => {
-        console.log("Error form ShowBookDetails_deleteClick");
+        console.log("error with clickrate" + err)
       })
   };
 
-  render() {
+  // onClickRating(RatingStars){
+  //   const data = {
+  //     rating: rating
+  //   }
 
+  //   axios
+  //    .put('http://localhost:5000/api/books/' + this.props.match.params.id, data)
+  //    .then(res => {
+  //      console.log("Data " + res.data)
+  //   })
+  //   .catch(err => {
+  //     console.log("error with clickrate" + err)
+  //   })
+  //   this.state.clickrate = data.clickrate
+  // }
+
+  
+  render() {
     const book = this.state.book;
     
+    // const click = book.clickRate
+    // console.log("ORIGINAL CLICKRATE" + book.clickrate + " " + click)
+    // const clickNum = (Number(click)) + 1;
+    // this.onClickRateUpdate(clickNum);
+    // console.log("Not Null!! " + clickNum + " " + click + " " + this.props.match.params.id);
+    
+    // this.state.clickrate = click;
+
     let BookItem = <div>
       <table className="table table-hover">
         {/* <thead>
@@ -103,6 +144,11 @@ class showBookDetails extends Component {
             <td>Rating</td>
             <td>{ Number(book.rating) }</td>
           </tr>
+          <tr>
+            <th scope="row">11</th>
+            <td>Click Rate</td>
+            <td>{ Number(book.clickrate) }</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -131,7 +177,7 @@ class showBookDetails extends Component {
           </div>
           <div className="star"></div>
           <form onSubmit={this.handleSubmit}>
-        <RatingStars name='star' />      
+        <RatingStars/>      
         </form> 
         </div>
       </div>

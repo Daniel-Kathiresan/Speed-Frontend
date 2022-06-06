@@ -1,21 +1,30 @@
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 import App from './App';
-// import RatingStars from './components/RatingStars';
 
-// describe('Rating Stars', () => {
-//   it("Give a rating", () => {
-//     render(<RatingStars />);
-//     expect(screen.getByAltText("Give a rating")).toBeInTheDocument();
-//     const input = screen.getByAltText("5");
-//     fireEvent.click(input);
-//     expect(input.textContent).toEqual("5");
-//   })
-// });
+class showBookDetails extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      book: {},
+      clickrate: '',
+    }
+  }
+}
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/Search Article/i);
-  expect(linkElement).toBeInTheDocument();
-});
 
+
+  
+  
+    describe('Testing sum', () => {)
+  function sum(a, b) {
+     return a + b;
+  }
+
+    it('should equal 4',()=>{
+       expect(sum(2,2)).toBe(4);
+      })
+  
+    test('also should equal 4', () => {
+        expect(sum(2,2)).toBe(4);
+      })                     

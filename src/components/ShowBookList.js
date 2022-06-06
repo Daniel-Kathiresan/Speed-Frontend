@@ -3,7 +3,7 @@ import '../App.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import BookCard from './BookCard';
-import ClickRate from './ClickRate';
+// import ClickRate from './ClickRate';
 
 class ShowBookList extends Component {
   constructor(props) {
