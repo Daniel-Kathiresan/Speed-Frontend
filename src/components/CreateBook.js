@@ -66,7 +66,6 @@ class CreateBook extends Component {
         <a href="/">Home Page</a>
         <a className="active" href="/create-book">Add Article</a>
         <a href="/search-article">Search Article</a>
-        <a href="#about">About</a>
         <div className="topnav-right">
         <a href="/moderator-panel" >Moderator Access</a>
         </div>
