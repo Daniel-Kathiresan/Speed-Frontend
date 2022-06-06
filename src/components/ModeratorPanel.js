@@ -19,20 +19,20 @@ class ModeratorPanel extends Component {
         this.setState({
           books: res.data,
           approvedBooks: res.data,
-        })
+        });
       })
       .catch(err =>{
-        console.log('Error from ModeratorPanel');
-      })
-  };
+        console.log('Error from ModeratorPanel' + err);
+      });
+  }
 
 
   render() {
     const books = this.state.books;
     books.forEach(element => {
       if(element.approved === true){
-        console.log("Approval " + element.title +element.approved)
-        delete this.state.approvedBooks[this.state.approvedBooks.indexOf(element)]
+        console.log("Approval " + element.title + element.approved);
+        delete this.state.approvedBooks[this.state.approvedBooks.indexOf(element)];
       }
     });
     console.log("PrintBook: " + this.state.approvedBooks);
@@ -41,15 +41,15 @@ class ModeratorPanel extends Component {
     if(!this.state.approvedBooks) {
       bookList = "there is no book record!";
     } else {
-      bookList = this.state.approvedBooks.map((book, k) => 
+      bookList = this.state.approvedBooks.map((book, k) =>
         <ModeratorBookCard book={book} key={k} />
       );
     }
 
     return (
       <div className="ModeratorPanel">
-        <div class="topnav">
-        <a class="active" href="/">Return to Home</a>
+        <div className="topnav">
+        <a className="active" href="/">Return to Home</a>
       </div>
         <div className="container">
           <div className="row">

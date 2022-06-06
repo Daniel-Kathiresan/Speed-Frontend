@@ -20,20 +20,20 @@ class ShowBookList extends Component {
         this.setState({
           books: res.data,
           approvedBooks: res.data,
-        })
+        });
       })
       .catch(err =>{
-        console.log('Error from ShowBookList');
-      })
-  };
+        console.log('Error from ShowBookList' + err);
+      });
+  }
 
 
   render() {
     const books = this.state.books;
     books.forEach(element => {
       if(element.approved === false){
-        console.log("Approval " + element.title +element.approved)
-        delete this.state.approvedBooks[this.state.approvedBooks.indexOf(element)]
+        console.log("Approval " + element.title + element.approved);
+        delete this.state.approvedBooks[this.state.approvedBooks.indexOf(element)];
       }
     });
     console.log("PrintBook: " + this.state.approvedBooks);
@@ -42,19 +42,19 @@ class ShowBookList extends Component {
     if(!this.state.approvedBooks) {
       bookList = "there is no book record!";
     } else {
-      bookList = this.state.approvedBooks.map((book, k) => 
+      bookList = this.state.approvedBooks.map((book, k) =>
         <BookCard book={book} key={k} />
       );
     }
 
     return (
       <div className="ShowBookList">
-        <div class="topnav">
-        <a class="active" href="/">Home Page</a>
+        <div className="topnav">
+        <a className="active" href="/">Home Page</a>
         <a href="/create-book">Add Article</a>
-        <a href="#contact">Search Article</a>
+        <a href="/search-article">Search Article</a>
         <a href="#about">About</a>
-        <div class="topnav-right">
+        <div className="topnav-right">
           <a href="/moderator-panel" >Moderator Access</a>
         </div>
       </div>

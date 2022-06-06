@@ -86,6 +86,16 @@
   color: #AA6C39;
 }
 
+.SearchArticle {
+  background-color: #FFF8DC;
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  min-width: 100px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #AA6C39;
+}
+
 .ModeratorPanel {
   background-color: #FFF8DC;
   height: 100%;
@@ -186,4 +196,20 @@
 .topnav a.active {
   background-color: #C8D5BC;
   color: white;
+}
+
+select{
+  font-size: 17px;
+  display: inline;
+  margin-left: 15px;
+  color: #6c757d;
+
+}
+
+.cTypeH3{
+  color: #6c757d;
+  font-size: 1em;
+  padding: 10px 0 2px 0;
+  display: inline;
+  font-weight: bold;
 }

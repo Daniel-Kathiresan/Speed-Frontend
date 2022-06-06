@@ -1,48 +1,48 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import '../App.css';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import "../App.css";
 
 class ApprovalPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      approved:'',
-      content_type: '',
-      se_practice: '',
-      error: '' 
+      approved: "",
+      content_type: "",
+      se_practice: "",
+      error: ""
     };
     this._handleRadio = this._handleRadio.bind(this);
   }
 
   _handleRadio(event) {
-    const approved = event.currentTarget.value === 'true' ? true: false;
-    console.log('handle', approved);
+    const approved = event.currentTarget.value === "true" ? true : false;
+    console.log("handle", approved);
     this.setState({
       approved: approved
-    })
+    });
   }
 
   componentDidMount() {
     // console.log("Print id: " + this.props.match.params.id);
     axios
-      .get('http://localhost:5000/api/books/'+this.props.match.params.id)
+      .get("http://localhost:5000/api/books/" + this.props.match.params.id)
       .then(res => {
         // this.setState({...this.state, book: res.data})
         this.setState({
           approved: res.data.approved,
           content_type: res.data.content_type
-        })
+        });
       })
       .catch(err => {
-        console.log("Error from Approval Page");
-      })
-  };
+        console.log("Error from Approval Page" + err);
+      });
+  }
 
 
 
   onSelectChange = e => {
-    console.log(e.target.value)
+    console.log(e.target.value);
     this.setState({content_type: e.target.value });
   };
 
@@ -58,7 +58,7 @@ class ApprovalPage extends Component {
       }else{
         this.setState({error: "Please enter a content type before continuing" });
       }
-      
+
     } else {
       if(this.state.se_practice === "" || this.state.se_practice === null){
         this.setState({error: "Please enter an SE practice before continuing" });
@@ -71,13 +71,14 @@ class ApprovalPage extends Component {
     };
 
     axios
-      .put('http://localhost:5000/api/books/'+this.props.match.params.id, data)
+      .put("http://localhost:5000/api/books/" + this.props.match.params.id, data)
       .then(res => {
-        this.props.history.push('/moderator-details/'+this.props.match.params.id);
+        this.props.history.push("/moderator-details/" + this.props.match.params.id);
+        console.log(res);
       })
       .catch(err => {
-        console.log("Error in Approval Page!");
-      })
+        console.log("Error in Approval Page!" + err);
+      });
     }
   }
   };
@@ -96,21 +97,21 @@ class ApprovalPage extends Component {
               </Link>
             </div>
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Edit Article</h1>
+              <h1 className="display-4 text-center">Approve Article</h1>
               <p className="lead text-center">
-                  Update Article Info
+                  Please fill in all appropriate fields
               </p>
             </div>
           </div>
-        
+
           <div className="col-md-8 m-auto">
           <form noValidate onSubmit={this.onSubmit}>
           <div className="radio">
           <h3>Approve or dissaprove article</h3>
           <label>
-            <input 
-              type="radio" 
-              name="approved" 
+            <input
+              type="radio"
+              name="approved"
               value="true"
               checked={approved === true}
               onChange={this._handleRadio} />
@@ -119,9 +120,9 @@ class ApprovalPage extends Component {
        </div>
        <div className="radio">
          <label>
-           <input 
-             type="radio" 
-             name="approved" 
+           <input
+             type="radio"
+             name="approved"
              value="false"
              checked={approved === false}
              onChange={this._handleRadio} />
@@ -134,7 +135,7 @@ class ApprovalPage extends Component {
                 <label>
           <h3>Pick a content type</h3>
           <select value={this.state.content_type} onChange={this.onSelectChange}>
-          <option value="null" defaultValue></option>            
+          <option value="null" defaultValue></option>
            <option value="Highly Relevant">Highly Relevant</option>
             <option value="Relevant">Relevant</option>
             <option value="Slightly Relevant">Slightly Relevant</option>
@@ -142,11 +143,11 @@ class ApprovalPage extends Component {
           </select>
         </label>
         <div className='form-group'>
-                  <inputs
-                    type='text'
-                    placeholder='Enter an SE practice'
-                    name='se_practice'
-                    className='form-control'
+                  <input
+                    type="text"
+                    placeholder="Enter an SE practice"
+                    name="se_practice"
+                    className="form-control"
                     value={this.state.se_practice}
                     onChange={this.onChange}
                   />

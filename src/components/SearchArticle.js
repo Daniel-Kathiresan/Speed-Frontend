@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import '../App.css';
 import axios from 'axios';
+import BookCard from './BookCard';
 
 
-class CreateBook extends Component {
-  constructor() {
-    super();
+class SearchArticle extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
+      books: [],
       title: '',
       authors: '',
       journal_name: '',
@@ -15,6 +17,10 @@ class CreateBook extends Component {
       volume: '',
       number: '',
       pages: '',
+      approved: '',
+      content_type: '',
+      bookList: [],
+      se_practice: ''
     };
   }
 
@@ -22,48 +28,69 @@ class CreateBook extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onSubmit = e => {
-    e.preventDefault();
-
-    const data = {
-      title: this.state.title,
-      authors: this.state.authors,
-      journal_name: this.state.journal_name,
-      content: this.state.content,
-      publication_date: this.state.publication_date,
-      volume: this.state.volume,
-      number: this.state.number,
-      pages: this.state.pages,
-    };
-
-    axios
-      .post('http://localhost:5000/api/books', data)
-      .then(res => {
-        console.log(res);
-        this.setState({
-          title: '',
-          authors: '',
-          journal_name: '',
-          content: '',
-          publication_date: '',
-          volume: '',
-          number: '',
-          pages: '',
-        });
-        this.props.history.push('/');
-      })
-      .catch(err => {
-        console.log("Error in CreateBook!" + err);
-      });
+  onContentTypeChange = e => {
+    console.log(e.target.value);
+    this.setState({content_type: e.target.value });
   };
 
+  componentDidMount() {
+    axios
+      .get('http://localhost:5000/api/books')
+      .then(res => {
+        this.setState({
+          books: res.data,
+        });
+      })
+      .catch(err =>{
+        console.log('Error from ShowBookList' + err);
+      });
+  }
+
+  onSubmit = e => {
+    e.preventDefault();
+    const books = this.state.books;
+    this.setState({bookList: []});
+    const matchBooks = [];
+
+    books.forEach(book => {
+      if(((book.title === this.state.title && this.state.title !== "")
+      || (book.authors === this.state.authors && this.state.authors !== "")
+      || (book.content === this.state.content && this.state.content !== "")
+      || (book.journal_name === this.state.journal_name && this.state.journal_name !== "")
+      || (book.publication_date === this.state.publication_date && this.state.publication_date !== "")
+      || (book.volume === this.state.volume && this.state.volume !== "")
+      || (book.number === this.state.number && this.state.number !== "")
+      || (book.pages === this.state.pages && this.state.pages !== "")
+      || (book.content_type === this.state.content_type && this.state.content_type !== "")
+      || (book.se_practice === this.state.se_practice && this.state.se_practice !== "")
+      && book.approved === true)
+        ){
+          console.log("Match!" + book.title);
+          matchBooks.push(book);
+        }
+    });
+
+    if(!matchBooks) {
+      this.setState({bookList: "there is no book record!"});
+    } else {
+      this.setState({bookList: matchBooks.map((book, k) =>
+        <BookCard book={book} key={k} />
+      )});
+    }
+
+    this.forceUpdate();
+  };
+
+
   render() {
+
+
     return (
-      <div className="CreateBook">
-                <div className="topnav">
+      <div className="SearchArticle">
+        <div className="topnav">
         <a href="/">Home Page</a>
-        <a className="active" href="/create-book">Add Article</a>
-        <a href="/search-article">Search Article</a>
+        <a href="/create-book">Add Article</a>
+        <a className="active" href="/search-article">Search Article</a>
         <a href="#about">About</a>
         <div className="topnav-right">
         <a href="/moderator-panel" >Moderator Access</a>
@@ -71,16 +98,23 @@ class CreateBook extends Component {
       </div>
         <div className="container">
           <div className="row">
-            <div className="col-md-8 m-auto">
+            <div className="col-md-12">
               <br />
-            </div>
-            <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Add Article</h1>
+              <h2 className="display-4 text-center">Approved Article Search</h2>
               <p className="lead text-center">
-                  Add new Article
+                  Enter any field to search
               </p>
+            </div>
 
-              <form noValidate onSubmit={this.onSubmit}>
+            <div className="col-md-11">
+              <br />
+              <br />
+              <hr />
+            </div>
+
+          </div>
+
+          <form noValidate onSubmit={this.onSubmit}>
                 <div className='form-group'>
                   <input
                     type='text'
@@ -166,13 +200,36 @@ class CreateBook extends Component {
                     onChange={this.onChange}
                   />
                 </div>
-
+                <div className='form-group'>
+                <h3 className="cTypeH3">Content Type</h3>
+                <select value={this.state.content_type} onChange={this.onContentTypeChange}>
+          <option value="null" defaultValue></option>
+           <option value="Highly Relevant">Highly Relevant</option>
+            <option value="Relevant">Relevant</option>
+            <option value="Slightly Relevant">Slightly Relevant</option>
+            <option value="Not Relevant">Not Relevant</option>
+          </select>
+          </div>
+          <div className='form-group'>
+                  <input
+                    type="text"
+                    placeholder="Enter an SE practice"
+                    name="se_practice"
+                    className="form-control"
+                    value={this.state.se_practice}
+                    onChange={this.onChange}
+                  />
+                </div>
                 <input
                     type="submit"
                     className="btn btn-outline-warning btn-block mt-4"
                 />
               </form>
-          </div>
+
+          <div className="list">
+                {
+                  this.state.bookList
+                }
           </div>
         </div>
       </div>
@@ -180,4 +237,4 @@ class CreateBook extends Component {
   }
 }
 
-export default CreateBook;
+export default SearchArticle;

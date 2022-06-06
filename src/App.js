@@ -7,8 +7,9 @@ import ShowBookList from './components/ShowBookList';
 import ShowBookDetails from './components/ShowBookDetails';
 import UpdateBookInfo from './components/UpdateBookInfo';
 import ModeratorPanel from './components/ModeratorPanel';
-import ModeratorArticleDetails from './components/ModeratorArticleDetails'
-import ApprovalPage from './components/ApprovalPage'
+import ModeratorArticleDetails from './components/ModeratorArticleDetails';
+import ApprovalPage from './components/ApprovalPage';
+import SearchArticle from './components/SearchArticle';
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
           <Route path='/moderator-panel' component={ModeratorPanel}/>
           <Route path='/moderator-details/:id' component={ModeratorArticleDetails}/>
           <Route path='/approval-page/:id' component={ApprovalPage}/>
+          <Route path='/search-article' component={SearchArticle}/>
         </div>
       </Router>
     );
@@ -29,3 +31,4 @@ class App extends Component {
 }
 
 export default App;
+
