@@ -20,6 +20,7 @@ class SearchArticle extends Component {
       approved: '',
       content_type: '',
       bookList: [],
+      se_practice: ''
     };
   }
 
@@ -48,7 +49,7 @@ class SearchArticle extends Component {
   onSubmit = e => {
     e.preventDefault();
     const books = this.state.books;
-    this.bookList.setState('');
+    this.setState({bookList: []});
     const matchBooks = [];
 
     books.forEach(book => {
@@ -60,8 +61,9 @@ class SearchArticle extends Component {
       || (book.volume === this.state.volume && this.state.volume !== "")
       || (book.number === this.state.number && this.state.number !== "")
       || (book.pages === this.state.pages && this.state.pages !== "")
-      || (book.content_type === this.state.content_type && this.state.content_type !== ""))
-      && book.approved === true
+      || (book.content_type === this.state.content_type && this.state.content_type !== "")
+      || (book.se_practice === this.state.se_practice && this.state.se_practice !== "")
+      && book.approved === true)
         ){
           console.log("Match!" + book.title);
           matchBooks.push(book);
@@ -69,11 +71,11 @@ class SearchArticle extends Component {
     });
 
     if(!matchBooks) {
-      this.bookList.setState("there is no book record!");
+      this.setState({bookList: "there is no book record!"});
     } else {
-      this.bookList.setState(matchBooks.map((book, k) =>
+      this.setState({bookList: matchBooks.map((book, k) =>
         <BookCard book={book} key={k} />
-      ));
+      )});
     }
 
     this.forceUpdate();
@@ -99,6 +101,9 @@ class SearchArticle extends Component {
             <div className="col-md-12">
               <br />
               <h2 className="display-4 text-center">Approved Article Search</h2>
+              <p className="lead text-center">
+                  Enter any field to search
+              </p>
             </div>
 
             <div className="col-md-11">
@@ -205,6 +210,16 @@ class SearchArticle extends Component {
             <option value="Not Relevant">Not Relevant</option>
           </select>
           </div>
+          <div className='form-group'>
+                  <input
+                    type="text"
+                    placeholder="Enter an SE practice"
+                    name="se_practice"
+                    className="form-control"
+                    value={this.state.se_practice}
+                    onChange={this.onChange}
+                  />
+                </div>
                 <input
                     type="submit"
                     className="btn btn-outline-warning btn-block mt-4"

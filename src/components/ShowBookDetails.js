@@ -98,6 +98,11 @@ class showBookDetails extends Component {
             <td>Content</td>
             <td>{ String(book.content_type) }</td>
           </tr>
+          <tr>
+            <th scope="row">10</th>
+            <td>SE Practice</td>
+            <td>{ book.se_practice }</td>
+          </tr>
         </tbody>
       </table>
     </div>;

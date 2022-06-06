@@ -97,9 +97,9 @@ class ApprovalPage extends Component {
               </Link>
             </div>
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Edit Article</h1>
+              <h1 className="display-4 text-center">Approve Article</h1>
               <p className="lead text-center">
-                  Update Article Info
+                  Please fill in all appropriate fields
               </p>
             </div>
           </div>
@@ -142,8 +142,8 @@ class ApprovalPage extends Component {
             <option value="Not Relevant">Not Relevant</option>
           </select>
         </label>
-        <div className="form-group">
-                  <inputs
+        <div className='form-group'>
+                  <input
                     type="text"
                     placeholder="Enter an SE practice"
                     name="se_practice"
