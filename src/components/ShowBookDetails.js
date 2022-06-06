@@ -7,7 +7,11 @@ class showBookDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      book: {}
+      book: {},
+      rating: '',
+      oldRating: '',
+      numRatings: '',
+      avRating: '',
     };
   }
 
@@ -18,7 +22,10 @@ class showBookDetails extends Component {
       .then(res => {
         // console.log("Print-showBookDetails-API-response: " + res.data);
         this.setState({
-          book: res.data
+          book: res.data,
+          oldRating: res.data.rating,
+          numRatings: res.data.numRatings,
+          avRating: res.data.rating
         });
       })
       .catch(err => {
@@ -38,6 +45,51 @@ class showBookDetails extends Component {
       });
   }
 
+  onSelectChange = e => {
+    console.log(e.target.value);
+    this.setState({rating: e.target.value });
+  };
+
+  onSubmit = e => {
+    var newRating = 0;
+    var newNumRating = 0;
+    e.preventDefault();
+    console.log("Num ratings: " + this.state.numRatings);
+    if((this.state.numRatings !== null && this.state.numRatings > 0)){
+      console.log("IF!");
+      newRating = (Number(this.state.rating) + Number(this.state.oldRating) / this.state.numRatings);
+    } else {
+      console.log("ELSE!");
+      newRating = this.state.rating;
+    }
+
+    if(this.state.numRatings === null){
+      newNumRating = 1;
+    } else {
+      newNumRating = (Number(this.state.numRatings) + 1);
+    }
+
+    const data = {
+      rating: newRating,
+      numRatings: newNumRating
+    };
+
+    console.log("AA " + newRating);
+    console.log("BB " + this.state.rating);
+    console.log("CC " + newNumRating);
+
+    axios
+      .put("http://localhost:5000/api/books/" + this.props.match.params.id, data)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log("Error in ShowDetail Page!" + err);
+      });
+      this.setState({
+        avRating: newRating
+      });
+  };
 
   render() {
 
@@ -54,54 +106,59 @@ class showBookDetails extends Component {
         </thead> */}
         <tbody>
           <tr>
-            <th scope="row">1</th>
+            <th scope="row"></th>
             <td>Title</td>
             <td>{ book.title }</td>
           </tr>
           <tr>
-            <th scope="row">2</th>
+            <th scope="row"></th>
             <td>Authors</td>
             <td>{ book.authors }</td>
           </tr>
           <tr>
-            <th scope="row">3</th>
+            <th scope="row"></th>
             <td>Journal Name</td>
             <td>{ book.journal_name }</td>
           </tr>
           <tr>
-            <th scope="row">4</th>
+            <th scope="row"></th>
             <td>Content</td>
             <td>{ book.content }</td>
           </tr>
           <tr>
-            <th scope="row">5</th>
+            <th scope="row"></th>
             <td>Publication Date</td>
             <td>{ book.publication_date }</td>
           </tr>
           <tr>
-            <th scope="row">6</th>
+            <th scope="row"></th>
             <td>Volume</td>
             <td>{ book.volume }</td>
           </tr>
           <tr>
-            <th scope="row">7</th>
+            <th scope="row"></th>
             <td>Article Number</td>
             <td>{ book.number }</td>
           </tr>
           <tr>
-            <th scope="row">8</th>
+            <th scope="row"></th>
             <td>Article No. Pages</td>
             <td>{ book.pages }</td>
           </tr>
           <tr>
-            <th scope="row">9</th>
+            <th scope="row"></th>
             <td>Evidence</td>
             <td>{ String(book.content_type) }</td>
           </tr>
           <tr>
-            <th scope="row">10</th>
+            <th scope="row"></th>
             <td>SE Practice</td>
             <td>{ book.se_practice }</td>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td>Average Rating</td>
+            <td>{ this.state.avRating }</td>
           </tr>
         </tbody>
       </table>
@@ -129,6 +186,20 @@ class showBookDetails extends Component {
           <div>
             { BookItem }
           </div>
+          <form noValidate onSubmit={this.onSubmit}>
+          <label>
+          <h3 className="cTypeH3">Rating</h3>
+          <select value={this.state.content_type} onChange={this.onSelectChange}>
+           <option value="0">0</option>
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+           <option value="4">4</option>
+           <option value="5">5</option>
+          </select>
+        </label>
+        <button type="submit" className="btn btn-outline-info btn-lg btn-block">Submit Rating</button>
+            </form>
         </div>
       </div>
     );
