@@ -8,13 +8,13 @@ class CreateBook extends Component {
     super();
     this.state = {
       title: '',
-      authors:'',
-      journal_name:'',
-      content:'',
-      publication_date:'',
-      volume:'',
-      number:'',
-      pages:'',
+      authors: '',
+      journal_name: '',
+      content: '',
+      publication_date: '',
+      volume: '',
+      number: '',
+      pages: '',
     };
   }
 
@@ -39,32 +39,33 @@ class CreateBook extends Component {
     axios
       .post('http://localhost:5000/api/books', data)
       .then(res => {
+        console.log(res);
         this.setState({
           title: '',
-          authors:'',
-          journal_name:'',
-          content:'',
-          publication_date:'',
-          volume:'',
-          number:'',
-          pages:'',
-        })
+          authors: '',
+          journal_name: '',
+          content: '',
+          publication_date: '',
+          volume: '',
+          number: '',
+          pages: '',
+        });
         this.props.history.push('/');
       })
       .catch(err => {
-        console.log("Error in CreateBook!");
-      })
+        console.log("Error in CreateBook!" + err);
+      });
   };
 
   render() {
     return (
       <div className="CreateBook">
-                <div class="topnav">
-        <a  href="/">Home Page</a>
-        <a class="active" href="/create-book">Add Article</a>
+                <div className="topnav">
+        <a href="/">Home Page</a>
+        <a className="active" href="/create-book">Add Article</a>
         <a href="/search-article">Search Article</a>
         <a href="#about">About</a>
-        <div class="topnav-right">
+        <div className="topnav-right">
         <a href="/moderator-panel" >Moderator Access</a>
         </div>
       </div>

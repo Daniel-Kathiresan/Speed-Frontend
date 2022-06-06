@@ -14,17 +14,17 @@ class moderatorArticleDetails extends Component {
   componentDidMount() {
     console.log("Print id: " + this.props.match.params.id);
     axios
-      .get('http://localhost:5000/api/books/'+this.props.match.params.id)
+      .get('http://localhost:5000/api/books/' + this.props.match.params.id)
       .then(res => {
         console.log("Print-showBookDetails-API-response: " + res.data);
         this.setState({
           book: res.data
-        })
+        });
       })
       .catch(err => {
-        console.log("Error from ModeratorArticleDetails");
-      })
-  };
+        console.log("Error from ModeratorArticleDetails" + err);
+      });
+  }
 
   render() {
 
@@ -93,7 +93,7 @@ class moderatorArticleDetails extends Component {
           </tr>
         </tbody>
       </table>
-    </div>
+    </div>;
 
     return (
       <div className="ModeratorArticleDetails">

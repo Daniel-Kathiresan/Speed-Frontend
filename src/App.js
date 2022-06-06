@@ -7,9 +7,9 @@ import ShowBookList from './components/ShowBookList';
 import ShowBookDetails from './components/ShowBookDetails';
 import UpdateBookInfo from './components/UpdateBookInfo';
 import ModeratorPanel from './components/ModeratorPanel';
-import ModeratorArticleDetails from './components/ModeratorArticleDetails'
-import ApprovalPage from './components/ApprovalPage'
-import SearchArticle from './components/SearchArticle'
+import ModeratorArticleDetails from './components/ModeratorArticleDetails';
+import ApprovalPage from './components/ApprovalPage';
+import SearchArticle from './components/SearchArticle';
 
 class App extends Component {
   render() {

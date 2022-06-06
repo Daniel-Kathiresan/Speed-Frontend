@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import '../App.css';
 
 const ModeratorBookCard = (props) => {
-    const book  = props.book;
+    const book = props.book;
 
     return(
         <div className="card-container">
@@ -13,13 +13,13 @@ const ModeratorBookCard = (props) => {
                       { book.title }
 
                 </h2>
-                <hr class="divbreak"></hr>
+                <hr className="divbreak"></hr>
                 <h3>{book.authors}</h3>
                 <p>{book.content}</p>
             </div>
             </Link>
         </div>
-    )
+    );
 };
 
 export default ModeratorBookCard;

@@ -10,14 +10,14 @@ class SearchArticle extends Component {
     this.state = {
       books: [],
       title: '',
-      authors:'',
-      journal_name:'',
-      content:'',
-      publication_date:'',
-      volume:'',
-      number:'',
-      pages:'',
-      approved:'',
+      authors: '',
+      journal_name: '',
+      content: '',
+      publication_date: '',
+      volume: '',
+      number: '',
+      pages: '',
+      approved: '',
       content_type: '',
       bookList: [],
     };
@@ -28,7 +28,7 @@ class SearchArticle extends Component {
   };
 
   onContentTypeChange = e => {
-    console.log(e.target.value)
+    console.log(e.target.value);
     this.setState({content_type: e.target.value });
   };
 
@@ -38,41 +38,42 @@ class SearchArticle extends Component {
       .then(res => {
         this.setState({
           books: res.data,
-        })
+        });
       })
       .catch(err =>{
-        console.log('Error from ShowBookList');
-      })
-  };
+        console.log('Error from ShowBookList' + err);
+      });
+  }
 
   onSubmit = e => {
     e.preventDefault();
     const books = this.state.books;
-    this.state.bookList = '';
+    this.bookList.setState('');
     const matchBooks = [];
 
     books.forEach(book => {
       if(((book.title === this.state.title && this.state.title !== "")
       || (book.authors === this.state.authors && this.state.authors !== "")
-      || (book.content === this.state.content && this.state.content !== "") 
+      || (book.content === this.state.content && this.state.content !== "")
       || (book.journal_name === this.state.journal_name && this.state.journal_name !== "")
       || (book.publication_date === this.state.publication_date && this.state.publication_date !== "")
       || (book.volume === this.state.volume && this.state.volume !== "")
       || (book.number === this.state.number && this.state.number !== "")
       || (book.pages === this.state.pages && this.state.pages !== "")
-      || (book.content_type === this.state.content_type && this.state.content_type !== "")) && book.approved == true
+      || (book.content_type === this.state.content_type && this.state.content_type !== ""))
+      && book.approved === true
         ){
           console.log("Match!" + book.title);
           matchBooks.push(book);
         }
-    })
+    });
 
     if(!matchBooks) {
-      this.state.bookList = "there is no book record!";
+      this.bookList.setState("there is no book record!");
     } else {
-      this.state.bookList = matchBooks.map((book, k) => 
+      this.bookList.setState(matchBooks.map((book, k) =>
         <BookCard book={book} key={k} />
-      );
+      ));
     }
 
     this.forceUpdate();
@@ -84,12 +85,12 @@ class SearchArticle extends Component {
 
     return (
       <div className="SearchArticle">
-        <div class="topnav">
-        <a  href="/">Home Page</a>
+        <div className="topnav">
+        <a href="/">Home Page</a>
         <a href="/create-book">Add Article</a>
-        <a class="active" href="/search-article">Search Article</a>
+        <a className="active" href="/search-article">Search Article</a>
         <a href="#about">About</a>
-        <div class="topnav-right">
+        <div className="topnav-right">
         <a href="/moderator-panel" >Moderator Access</a>
         </div>
       </div>
@@ -197,7 +198,7 @@ class SearchArticle extends Component {
                 <div className='form-group'>
                 <h3 className="cTypeH3">Content Type</h3>
                 <select value={this.state.content_type} onChange={this.onContentTypeChange}>
-          <option value="null" defaultValue></option>            
+          <option value="null" defaultValue></option>
            <option value="Highly Relevant">Highly Relevant</option>
             <option value="Relevant">Relevant</option>
             <option value="Slightly Relevant">Slightly Relevant</option>
